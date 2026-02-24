@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, MapPin, Calendar, Compass, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDebounce } from "../hooks/useDebounce";
 import heroBg from "../../../assets/img/hero-bg.jpg";
 
 const destinations = [
@@ -22,18 +23,24 @@ const Hero = () => {
   const [showResults, setShowResults] = useState(false);
   const [filteredDestinations, setFilteredDestinations] = useState([]);
 
-  const handleSearch = () => {
-    const results = destinations.filter((dest) => {
-      const matchDestination = searchQuery.destination
-        ? dest.ville.toLowerCase().includes(searchQuery.destination.toLowerCase()) ||
-          dest.pays.toLowerCase().includes(searchQuery.destination.toLowerCase())
-        : true;
-      const matchType = searchQuery.type ? dest.type === searchQuery.type : true;
-      return matchDestination && matchType;
-    });
-    setFilteredDestinations(results);
-    setShowResults(true);
-  };
+  const debouncedDestination = useDebounce(searchQuery.destination, 500);
+
+  useEffect(() => {
+    if (debouncedDestination || searchQuery.type) {
+      const results = destinations.filter((dest) => {
+        const matchDestination = debouncedDestination
+          ? dest.ville.toLowerCase().includes(debouncedDestination.toLowerCase()) ||
+            dest.pays.toLowerCase().includes(debouncedDestination.toLowerCase())
+          : true;
+        const matchType = searchQuery.type ? dest.type === searchQuery.type : true;
+        return matchDestination && matchType;
+      });
+      setFilteredDestinations(results);
+      setShowResults(true);
+    } else {
+      setShowResults(false);
+    }
+  }, [debouncedDestination, searchQuery.type]);
 
   const closeResults = () => {
     setShowResults(false);
@@ -143,15 +150,16 @@ const Hero = () => {
             </div>
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleSearch}
-            className="bg-secondary hover:bg-secondary/90 text-white font-bold px-8 py-3 rounded-xl flex items-center gap-2 justify-center transition-all duration-300 shrink-0"
-          >
-            <Search size={18} />
-            Rechercher
-          </motion.button>
+          <div className="flex items-center justify-center px-8 py-3 bg-gray-50 rounded-xl">
+            {debouncedDestination !== searchQuery.destination ? (
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <div className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
+                Recherche...
+              </div>
+            ) : (
+              <Search size={18} className="text-primary" />
+            )}
+          </div>
         </motion.div>
 
         <motion.div

@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import heroImg from '../assets/img/hero-bg.jpg';
+import abidjanImg from '../assets/img/abidjan.jpg';
+import cotounouImg from '../assets/img/cotonou.jpg';
+import accraImg from '../assets/img/accra.jpg';
 
 export default function Landing() {
   const sectors = [
@@ -7,21 +11,21 @@ export default function Landing() {
       title: "Hils Company",
       subtitle: "Communication & Événementiel",
       description: "Stratégies de communication innovantes et organisation d'événements d'exception pour marquer les esprits.",
-      icon: "📢",
+      image: abidjanImg,
       link: "/communication",
     },
     {
       title: "Hils Travel & Explore",
       subtitle: "Voyages & Tourisme",
       description: "Des expériences de voyage uniques, authentiques et responsables à travers le monde.",
-      icon: "✈️",
+      image: cotounouImg,
       link: "/tourisme",
     },
     {
       title: "African Conscience Chill",
       subtitle: "Networking & Entrepreneuriat",
       description: "Événements entrepreneuriaux qui connectent, inspirent et accélèrent la croissance en Afrique.",
-      icon: "🌍",
+      image: accraImg,
       link: "/events/african-conscience-chill",
     }
   ];
@@ -122,8 +126,8 @@ export default function Landing() {
                 <div className="bg-white rounded-3xl p-8 border-2 border-primary/10 hover:border-gold shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-gold"></div>
                   
-                  <div className="w-20 h-20 bg-primary/5 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:bg-gold/10 group-hover:scale-110 transition-all duration-300">
-                    {sector.icon}
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden mb-6 group-hover:scale-110 transition-all duration-300">
+                    <img src={sector.image} alt={sector.title} className="w-full h-full object-cover" />
                   </div>
                   
                   <h3 
@@ -200,12 +204,9 @@ export default function Landing() {
             {Array.from({ length: 12 }).map((_, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-2xl p-6 border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all duration-300 flex items-center justify-center h-24 group"
+                className="bg-white rounded-2xl p-6 border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all duration-300 flex items-center justify-center h-24 group overflow-hidden"
               >
-                <div className="text-center">
-                  <div className="text-3xl mb-1 group-hover:scale-110 transition-transform">🏢</div>
-                  <p className="text-xs text-gray-400 font-medium">Logo {index + 1}</p>
-                </div>
+                <img src={heroImg} alt={`Partenaire ${index + 1}`} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity" />
               </div>
             ))}
           </div>
@@ -260,8 +261,8 @@ export default function Landing() {
                   {testimonial.text}
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center text-2xl">
-                    👤
+                  <div className="w-12 h-12 rounded-full overflow-hidden">
+                    <img src={abidjanImg} alt={testimonial.author} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="font-bold text-primary">{testimonial.author}</p>
@@ -292,54 +293,88 @@ export default function Landing() {
             </p>
           </div>
 
-          <Link to="/events/services" className="block group">
-            <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-12 relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
-                backgroundSize: "30px 30px",
-              }} />
-              
-              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Card Services Événementiels */}
+            <Link to="/events/services" className="block group">
+              <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-12 relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
+                  backgroundSize: "30px 30px",
+                }} />
+                
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                     Gestion Complète d'Événements
                   </h3>
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 mb-8">
                     {[
                       "Conception & planification stratégique",
                       "Gestion logistique complète",
                       "Coordination des prestataires",
                       "Animation & déploiement d'hôtesses",
-                      "Suivi post-événement & reporting",
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-3 text-white/90">
-                        <span className="w-6 h-6 rounded-full bg-gold flex items-center justify-center text-white text-xs font-bold mt-0.5 flex-shrink-0">✓</span>
+                      <li key={index} className="flex items-start gap-3 text-white/90 text-sm">
+                        <span className="w-5 h-5 rounded-full bg-gold flex items-center justify-center text-white text-xs font-bold mt-0.5 flex-shrink-0">✓</span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="inline-flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all">
-                    <span>Découvrir nos services</span>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span>Découvrir</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
                 </div>
+              </div>
+            </Link>
 
-                <div className="grid grid-cols-2 gap-4">
-                  {["🎯", "🎉", "🎬", "🎭"].map((emoji, index) => (
-                    <div 
-                      key={index} 
-                      className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-6xl border-2 border-white/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
-                      style={{ transitionDelay: `${index * 100}ms` }}
-                    >
-                      {emoji}
+            {/* Card Hils Company Événementiel */}
+            <Link to="/events" className="block group">
+              <div className="bg-gradient-to-br from-event-primary to-event-secondary rounded-3xl p-12 relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
+                  backgroundSize: "30px 30px",
+                }} />
+                
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6">
+                    <div className="w-6 h-6 rounded-full overflow-hidden">
+                      <img src={accraImg} alt="Hils Company" className="w-full h-full object-cover" />
                     </div>
-                  ))}
+                    <span className="text-white font-bold text-sm">Hils Company</span>
+                  </div>
+                  
+                  <h3 className="text-3xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Services Événementiels
+                  </h3>
+                  
+                  <p className="text-white/90 mb-8 leading-relaxed">
+                    Organisation d'événements professionnels, networking entrepreneurial et services d'hôtesses pour des expériences mémorables.
+                  </p>
+                  
+                  <div className="grid grid-cols-2 gap-3 mb-8">
+                    {[abidjanImg, cotounouImg, accraImg, heroImg].map((img, index) => (
+                      <div 
+                        key={index} 
+                        className="aspect-square bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 group-hover:scale-110 transition-all"
+                        style={{ transitionDelay: `${index * 50}ms` }}
+                      >
+                        <img src={img} alt={`Event ${index + 1}`} className="w-full h-full object-cover opacity-60" />
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="inline-flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all">
+                    <span>Voir tous nos événements</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -379,11 +414,13 @@ export default function Landing() {
             
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-gold to-primary rounded-3xl transform rotate-3 opacity-20"></div>
-              <div className="relative bg-white rounded-3xl p-8 h-96 flex items-center justify-center border-2 border-primary/10">
-                <div className="text-center">
-                  <div className="text-8xl mb-4">🎯</div>
-                  <p className="text-primary font-bold text-lg">Notre écosystème</p>
-                  <p className="text-gray-500">en action</p>
+              <div className="relative bg-white rounded-3xl overflow-hidden h-96 flex items-center justify-center border-2 border-primary/10">
+                <img src={heroImg} alt="Notre écosystème" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-white font-bold text-lg">Notre écosystème</p>
+                    <p className="text-white/80">en action</p>
+                  </div>
                 </div>
               </div>
             </div>

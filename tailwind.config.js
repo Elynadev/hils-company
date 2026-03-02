@@ -20,6 +20,12 @@ export default {
         'event-primary': '#DC2626',
         'event-secondary': '#991B1B',
         'event-accent': '#EF4444',
+        // African Conscience Chill colors
+        'acc-primary': '#FF6B35',
+        'acc-secondary': '#F7931E',
+        'acc-accent': '#FFA500',
+        'acc-dark': '#E63946',
+        'acc-bright': '#FF4500',
         // Tourisme colors (keep original)
         'tour-primary': '#1B3A2D',
         'tour-secondary': '#8B1A1A',

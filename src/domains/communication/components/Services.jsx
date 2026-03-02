@@ -35,7 +35,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-primary relative overflow-hidden px-6">
+    <section className="py-24 bg-comm-primary relative overflow-hidden px-6">
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -74,7 +74,7 @@ const Services = () => {
                 key={index}
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-secondary transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-comm-secondary transition-all duration-300">
                   <Icon size={28} className="text-gold group-hover:text-white transition-colors duration-300" />
                 </div>
 

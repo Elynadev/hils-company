@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Users, Lightbulb, Handshake, Trophy, Briefcase, Sparkles, ArrowRight, Calendar, MapPin, Star } from "lucide-react";
+import { Users, Lightbulb, Handshake, Trophy, Briefcase, Sparkles, ArrowRight, Calendar, MapPin, Star, Home } from "lucide-react";
 
 const EventsPage = () => {
   const services = [
@@ -45,15 +45,13 @@ const EventsPage = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-accent to-primary">
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-event-primary via-event-accent to-event-secondary">
         {/* Logo Home Button */}
         <Link 
           to="/" 
           className="absolute top-8 left-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 hover:bg-white/20 transition-all group"
         >
-          <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-            🏢
-          </div>
+          <Home size={20} className="text-white group-hover:scale-110 transition-transform" />
           <span className="text-white font-bold text-sm">Accueil</span>
         </Link>
 
@@ -152,7 +150,7 @@ const EventsPage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-primary relative overflow-hidden px-6">
+      <section className="py-24 bg-event-primary relative overflow-hidden px-6">
         <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.5) 40px, rgba(255,255,255,0.5) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.5) 40px, rgba(255,255,255,0.5) 41px)`,
         }} />

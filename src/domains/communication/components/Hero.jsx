@@ -1,18 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Home } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-accent to-primary">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-comm-primary via-comm-accent to-comm-secondary">
       
       {/* Logo Home Button */}
       <Link 
         to="/" 
         className="absolute top-8 left-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 hover:bg-white/20 transition-all group"
       >
-        <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-          🏢
-        </div>
+        <Home size={20} className="text-white group-hover:scale-110 transition-transform" />
         <span className="text-white font-bold text-sm">Accueil</span>
       </Link>
 

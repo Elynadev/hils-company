@@ -274,6 +274,75 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Carte Événements Section */}
+      <section className="py-24 bg-bg px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-gold font-bold text-sm uppercase tracking-widest">
+              Nos Services Événementiels
+            </span>
+            <h2 
+              className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Organisation <span className="text-gold">Clé en Main</span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              De la conception à la réalisation, nous gérons votre événement de A à Z.
+            </p>
+          </div>
+
+          <Link to="/events/services" className="block group">
+            <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-12 relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
+                backgroundSize: "30px 30px",
+              }} />
+              
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Gestion Complète d'Événements
+                  </h3>
+                  <ul className="space-y-4 mb-8">
+                    {[
+                      "Conception & planification stratégique",
+                      "Gestion logistique complète",
+                      "Coordination des prestataires",
+                      "Animation & déploiement d'hôtesses",
+                      "Suivi post-événement & reporting",
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start gap-3 text-white/90">
+                        <span className="w-6 h-6 rounded-full bg-gold flex items-center justify-center text-white text-xs font-bold mt-0.5 flex-shrink-0">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="inline-flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all">
+                    <span>Découvrir nos services</span>
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {["🎯", "🎉", "🎬", "🎭"].map((emoji, index) => (
+                    <div 
+                      key={index} 
+                      className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-6xl border-2 border-white/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                      style={{ transitionDelay: `${index * 100}ms` }}
+                    >
+                      {emoji}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Vision Section */}
       <section className="py-24 bg-bg px-6">
         <div className="max-w-7xl mx-auto">

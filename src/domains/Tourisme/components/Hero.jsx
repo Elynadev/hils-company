@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, MapPin, Calendar, Compass, X } from "lucide-react";
+import { Search, MapPin, Calendar, Compass, X, Home } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDebounce } from "../hooks/useDebounce";
 import { Link } from "react-router-dom";
@@ -55,9 +55,7 @@ const Hero = () => {
         to="/" 
         className="absolute top-8 left-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 hover:bg-white/20 transition-all group"
       >
-        <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-          🏢
-        </div>
+        <Home size={20} className="text-white group-hover:scale-110 transition-transform" />
         <span className="text-white font-bold text-sm">Accueil</span>
       </Link>
 

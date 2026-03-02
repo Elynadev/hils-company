@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Search, MapPin, Calendar, Compass, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDebounce } from "../hooks/useDebounce";
-import { Link } from "react-router-dom";
 import heroBg from "../../../assets/img/hero-bg.jpg";
 
 const destinations = [
@@ -50,17 +49,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Logo Home Button */}
-      <Link 
-        to="/" 
-        className="absolute top-8 left-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 hover:bg-white/20 transition-all group"
-      >
-        <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-          🏢
-        </div>
-        <span className="text-white font-bold text-sm">Accueil</span>
-      </Link>
-
       <img
         src={heroBg}
         alt="Ganvié - La Venise de l'Afrique"

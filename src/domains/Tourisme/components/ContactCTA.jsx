@@ -6,9 +6,9 @@ const ContactCTA = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="py-24 bg-[#f5f5f0] px-6">
+    <section className="py-24 bg-bg px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden bg-secondary p-12 md:p-16">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-accent to-primary p-12 md:p-16 shadow-2xl">
 
           <div
             className="absolute inset-0 opacity-10"
@@ -18,7 +18,7 @@ const ContactCTA = () => {
             }}
           />
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-primary/30 blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-gold/30 blur-3xl" />
 
           <div className="relative z-10 text-center">
 

@@ -180,7 +180,7 @@ const Hero = () => {
         >
           {[
             { nb: "12+", label: "Destinations" },
-            { nb: "500+", label: "Voyages organisés" },
+            { nb: "200+", label: "Voyages organisés" },
             { nb: "98%", label: "Clients satisfaits" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

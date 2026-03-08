@@ -35,7 +35,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-primary relative overflow-hidden px-6">
+    <section className="py-24 bg-gradient-to-br from-primary via-accent to-primary relative overflow-hidden px-6">
 
       <div
         className="absolute inset-0 opacity-5"
@@ -75,9 +75,9 @@ const Services = () => {
             return (
               <div
                 key={index}
-                className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 cursor-pointer"
+                className="group bg-white/5 hover:bg-white/10 border-2 border-white/10 hover:border-gold rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 cursor-pointer backdrop-blur-sm"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-secondary transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
                   <Icon size={28} className="text-gold group-hover:text-white transition-colors duration-300" />
                 </div>
 

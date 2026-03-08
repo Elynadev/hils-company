@@ -65,10 +65,10 @@ const destinations = [
 
 const Destinations = () => {
   return (
-    <section className="py-24 bg-[#f5f5f0] px-6">
+    <section className="py-24 bg-bg px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-secondary font-bold text-sm uppercase tracking-widest">
+          <span className="text-gold font-bold text-sm uppercase tracking-widest">
             Nos Destinations
           </span>
           <h2
@@ -76,9 +76,9 @@ const Destinations = () => {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Explorez l'Afrique{" "}
-            <span className="text-secondary">de l'Ouest</span>
+            <span className="text-gold">de l'Ouest</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-xl mx-auto">
             Des destinations soigneusement sélectionnées pour vous offrir
             le meilleur de la culture, de l'histoire et de la nature.
           </p>
@@ -88,7 +88,7 @@ const Destinations = () => {
           {destinations.map((dest) => (
             <div
               key={dest.id}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+              className="group bg-white rounded-3xl overflow-hidden border-2 border-primary/10 hover:border-gold shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
             >
               <div className="relative h-52 overflow-hidden">
                 <img
@@ -140,7 +140,7 @@ const Destinations = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-10 py-4 rounded-full text-base transition-all duration-300">
+          <button className="border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white font-bold px-10 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 hover:shadow-xl">
             Voir toutes les destinations
           </button>
         </div>

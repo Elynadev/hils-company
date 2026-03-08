@@ -16,7 +16,7 @@ const Ganvie = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <span className="text-secondary font-bold text-sm uppercase tracking-widest">
+            <span className="text-gold font-bold text-sm uppercase tracking-widest">
               Destination phare
             </span>
             <h2
@@ -24,18 +24,18 @@ const Ganvie = () => {
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Ganvié
-              <span className="text-secondary"> — La Venise</span>
+              <span className="text-gold"> — La Venise</span>
               <br />
               de l'Afrique
             </h2>
           </div>
           <div className="flex items-center gap-6 shrink-0">
             <div className="flex items-center gap-2 text-gray-500">
-              <MapPin size={16} className="text-secondary" />
+              <MapPin size={16} className="text-gold" />
               <span className="text-sm">Lac Nokoué, Bénin</span>
             </div>
             <div className="flex items-center gap-2 text-gray-500">
-              <Clock size={16} className="text-secondary" />
+              <Clock size={16} className="text-gold" />
               <span className="text-sm">1 à 2 jours</span>
             </div>
             <div className="flex items-center gap-1">
@@ -126,27 +126,27 @@ const Ganvie = () => {
             </p>
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+              className="flex items-center gap-3 bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               Réserver cette visite
               <ArrowRight size={18} />
             </button>
           </div>
 
-          <div className="bg-[#f5f5f0] rounded-3xl p-8">
+          <div className="bg-gradient-to-br from-bg to-white rounded-3xl p-8 border-2 border-gold/20 shadow-lg">
             <h4 className="font-black text-primary text-lg mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}>
               Infos pratiques
             </h4>
             <div className="space-y-4">
               {[
-                { icon: <MapPin size={18} className="text-secondary" />, label: "Localisation", value: "Lac Nokoué, 12km de Cotonou" },
-                { icon: <Clock size={18} className="text-secondary" />, label: "Durée recommandée", value: "Demi-journée à 2 jours" },
-                { icon: <Users size={18} className="text-secondary" />, label: "Type de groupe", value: "Solo, couple, famille, groupe" },
-                { icon: <Star size={18} className="text-secondary" />, label: "Meilleure période", value: "Novembre à Février" },
+                { icon: <MapPin size={18} className="text-gold" />, label: "Localisation", value: "Lac Nokoué, 12km de Cotonou" },
+                { icon: <Clock size={18} className="text-gold" />, label: "Durée recommandée", value: "Demi-journée à 2 jours" },
+                { icon: <Users size={18} className="text-gold" />, label: "Type de groupe", value: "Solo, couple, famille, groupe" },
+                { icon: <Star size={18} className="text-gold" />, label: "Meilleure période", value: "Novembre à Février" },
               ].map((info) => (
                 <div key={info.label} className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm border border-gold/20">
                     {info.icon}
                   </div>
                   <div>

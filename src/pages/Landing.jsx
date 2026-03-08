@@ -71,14 +71,14 @@ export default function Landing() {
         <>
           <Award size={40} className="text-gold mb-4" />
           <h3 className="text-xl font-black text-primary mb-2">Excellence</h3>
-          <p className="text-gray-600 text-sm">10+ ans d'expérience</p>
+          <p className="text-gray-600 text-sm">3 ans d'expérience</p>
         </>
       ),
       back: (
         <>
           <h3 className="text-xl font-black mb-4">Notre Expertise</h3>
           <p className="text-sm leading-relaxed">
-            Plus de 200 projets réalisés avec succès pour des clients prestigieux à travers l'Afrique.
+            Plus de 50 projets réalisés avec succès pour des clients ambitieux à travers l'Afrique.
           </p>
         </>
       ),
@@ -88,7 +88,7 @@ export default function Landing() {
         <>
           <Users size={40} className="text-gold mb-4" />
           <h3 className="text-xl font-black text-primary mb-2">Équipe</h3>
-          <p className="text-gray-600 text-sm">20+ professionnels</p>
+          <p className="text-gray-600 text-sm">10+ professionnels</p>
         </>
       ),
       back: (
@@ -253,10 +253,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { nb: "10+", label: "Années d'expérience" },
-              { nb: "500+", label: "Événements organisés" },
-              { nb: "50+", label: "Destinations" },
-              { nb: "1000+", label: "Entrepreneurs connectés" },
+              { nb: "3+", label: "Années d'expérience" },
+              { nb: "100+", label: "Événements organisés" },
+              { nb: "20+", label: "Destinations" },
+              { nb: "500+", label: "Entrepreneurs connectés" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">
                 <div 

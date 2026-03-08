@@ -12,7 +12,27 @@ import AppointmentForm from '../Partagé/Components/AppointmentForm';
 import Roadmap from '../Partagé/Components/Roadmap';
 import { Award, Users, Globe, Zap, Target, TrendingUp } from 'lucide-react';
 
+// Import des logos partenaires
+import logo1 from '../assets/logo partenaire/1767612442785.jpg';
+import logo2 from '../assets/logo partenaire/531408246_2118735935289726_527838604249789845_n.jpg';
+import logo3 from '../assets/logo partenaire/612429114_122164791500771014_4033363766878438935_n.jpg';
+import logo4 from '../assets/logo partenaire/avi,,_031932.jpg';
+import logo5 from '../assets/logo partenaire/brancom-Horizontal - White.png';
+import logo6 from '../assets/logo partenaire/BYB_20250811_100749_0000.png';
+import logo7 from '../assets/logo partenaire/FB_IMG_1739353056571.jpg';
+import logo8 from '../assets/logo partenaire/IMG-20250201-WA0084.jpg';
+import logo9 from '../assets/logo partenaire/IMG-20250206-WA0031.jpg';
+import logo10 from '../assets/logo partenaire/Logo A-03.png';
+import logo11 from '../assets/logo partenaire/LOGO PRINCIPAL DE LA MAIRIE DES JEUNES Abomey-Calavi.png';
+import logo12 from '../assets/logo partenaire/PPP (1).jpg';
+import logo13 from '../assets/logo partenaire/RESEAUPUB LOGO REDESIGNBY @300x.png';
+
 export default function Landing() {
+  const partnerLogos = [
+    logo1, logo2, logo3, logo4, logo5, logo6, 
+    logo7, logo8, logo9, logo10, logo11, logo12, logo13
+  ];
+
   const sectors = [
     {
       title: "Hils Company",
@@ -115,8 +135,9 @@ export default function Landing() {
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+            <Zap size={16} className="text-white/90" />
             <span className="text-white/90 text-sm font-medium tracking-widest uppercase">
-              🚀 Écosystème d'excellence africaine
+              Écosystème d'excellence africaine
             </span>
           </motion.div>
           
@@ -251,39 +272,37 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Partenaires Section */}
-      <section className="py-24 bg-bg px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">
-              Ils nous font confiance
-            </span>
-            <h2 
-              className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Plus de <span className="text-gold">50+ Partenaires</span>
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Des entreprises, institutions et organisations qui ont choisi l'excellence avec Hils Groupe.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {Array.from({ length: 12 }).map((_, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-2xl p-6 border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all duration-300 flex items-center justify-center h-24 group overflow-hidden"
+      {/* Partenaires Section - Bande défilante */}
+      <section className="py-8 bg-secondary overflow-hidden">
+        {/* Bande défilante */}
+        <div className="relative">
+          <div className="flex animate-scroll">
+            {/* Premier set de logos */}
+            {partnerLogos.map((logo, index) => (
+              <div
+                key={`first-${index}`}
+                className="flex-shrink-0 w-32 h-20 mx-3 flex items-center justify-center partner-logo-container"
               >
-                <img src={heroImg} alt={`Partenaire ${index + 1}`} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity" />
+                <img
+                  src={logo}
+                  alt={`Partenaire ${index + 1}`}
+                  className="partner-logo w-full h-full object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
+                />
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 text-lg font-medium">
-              Et bien d'autres partenaires à travers l'Afrique et le monde
-            </p>
+            {/* Duplication pour effet infini */}
+            {partnerLogos.map((logo, index) => (
+              <div
+                key={`second-${index}`}
+                className="flex-shrink-0 w-32 h-20 mx-3 flex items-center justify-center partner-logo-container"
+              >
+                <img
+                  src={logo}
+                  alt={`Partenaire ${index + 1}`}
+                  className="partner-logo w-full h-full object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -494,7 +513,7 @@ export default function Landing() {
       </section>
 
       {/* Formulaires Section */}
-      <section className="py-24 bg-white px-6">
+      <section id="formulaires" className="py-24 bg-white px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-gold font-bold text-sm uppercase tracking-widest">Contactez-nous</span>

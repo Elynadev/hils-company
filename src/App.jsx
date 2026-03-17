@@ -1,10 +1,25 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./routes/AppRoutes";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import TourismeRoutes from "./domains/Tourisme/routes";
+import AdminRoutes from "./domains/Admin/routes";
+import { AuthProvider } from "./domains/Admin/contexts/AuthContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <Routes>
+        <Route path="/tourisme/*" element={<TourismeRoutes />} />
+
+        <Route
+          path="/admin/*"
+          element={
+            <AuthProvider>
+              <AdminRoutes />
+            </AuthProvider>
+          }
+        />
+
+        <Route path="/" element={<Navigate to="/tourisme" replace />} />
+      </Routes>
     </BrowserRouter>
   );
 }

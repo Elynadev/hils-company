@@ -11,8 +11,7 @@ export const useAuth = () => {
     setIsLoading(false);
   }, []);
 
-
-  const login = useCallback(async (email, password) => {
+  const login = useCallback((email, password) => {
     const result = authService.login(email, password);
     if (result.success) {
       setUser(result.user);
@@ -20,7 +19,6 @@ export const useAuth = () => {
     return result;
   }, []);
 
-  
   const logout = useCallback(() => {
     authService.logout();
     setUser(null);

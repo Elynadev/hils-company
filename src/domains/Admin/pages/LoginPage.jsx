@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, Mail, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { useAuth } from "../hooks/useAuth";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -10,23 +10,26 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuthContext();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/admin/dashboard", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
-    const result = await login(email, password);
+    const result = login(email, password);
     
-    if (result.success) {
-      navigate("/admin/dashboard");
-    } else {
+    if (!result.success) {
       setError(result.error);
+      setIsLoading(false);
     }
-    
-    setIsLoading(false);
   };
 
   return (

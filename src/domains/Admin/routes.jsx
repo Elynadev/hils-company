@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-// import EvenementsPage from "./pages/EvenementsPage";
-// import ReservationsPage from "./pages/ReservationsPage";
+import EvenementsPage from "./pages/EvenementsPage";
+import ReservationsPage from "./pages/ReservationsPage";
 import AdminLayout from "./components/Layout/AdminLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -21,8 +21,8 @@ const AdminRoutes = () => {
       >
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<DashboardPage />} />
-        {/* <Route path="evenements" element={<EvenementsPage />} />
-        <Route path="reservations" element={<ReservationsPage />} /> */}
+        <Route path="evenements" element={<EvenementsPage />} />
+        <Route path="reservations" element={<ReservationsPage />} />
       </Route>
     </Routes>
   );

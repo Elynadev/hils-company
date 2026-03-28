@@ -22,7 +22,7 @@ const Testimonials = () => {
     },
     {
       name: "Amina Diallo",
-      role: "Groupe d'amis",
+      role: "Company d'amis",
       image: accraImg,
       text: "Hils Travel a su créer un voyage sur mesure qui correspondait exactement à nos attentes. Service impeccable du début à la fin.",
       rating: 5,

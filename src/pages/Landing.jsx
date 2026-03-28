@@ -35,7 +35,7 @@ export default function Landing() {
 
   const sectors = [
     {
-      title: "Hils Company",
+      title: "Hils Business Solution",
       subtitle: "Communication",
       description: "Stratégies de communication innovantes, identité visuelle, production audiovisuelle et marketing digital pour amplifier votre message.",
       image: abidjanImg,
@@ -49,7 +49,7 @@ export default function Landing() {
       link: "/tourisme",
     },
     {
-      title: "Hils Company",
+      title: "Hils Experiences",
       subtitle: "Événementiel",
       description: "Organisation complète d'événements professionnels, networking entrepreneurial et services d'hôtesses d'exception.",
       image: accraImg,
@@ -148,7 +148,7 @@ export default function Landing() {
             className="text-5xl md:text-7xl font-black text-white leading-tight mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Groupe Hils
+            Hils Company
             <br />
             <span className="text-gold">Créer l'Extraordinaire</span>
           </motion.h1>
@@ -547,13 +547,13 @@ export default function Landing() {
                 <span className="text-gold">trois expertises</span>
               </h2>
               <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
-                Le Groupe Hils rassemble des talents passionnés autour d'une mission commune : 
+                Le Hils Company rassemble des talents passionnés autour d'une mission commune : 
                 valoriser l'excellence africaine à travers la communication, l'exploration 
                 du monde et la connexion des entrepreneurs.
               </p>
               <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
                 Chaque entité conserve son identité propre tout en bénéficiant de la synergie 
-                du groupe pour offrir des services d'excellence.
+                du Company pour offrir des services d'excellence.
               </p>
               
               <div className="flex flex-wrap gap-4">

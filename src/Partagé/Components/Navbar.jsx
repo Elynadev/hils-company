@@ -16,7 +16,7 @@ const Navbar = () => {
             </div>
             <div>
               <h1 className="text-xl font-black text-primary group-hover:text-gold transition-colors" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Groupe Hils
+                Hils Company
               </h1>
               <p className="text-xs text-gray-500">Excellence Africaine</p>
             </div>

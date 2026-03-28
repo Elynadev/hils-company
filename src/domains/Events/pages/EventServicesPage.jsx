@@ -78,7 +78,7 @@ const EventServicesPage = () => {
           >
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="text-white/90 text-sm font-medium tracking-widest uppercase">
-              Hils Groupe · Services Événementiels
+              Hils Company · Services Événementiels
             </span>
           </motion.div>
 

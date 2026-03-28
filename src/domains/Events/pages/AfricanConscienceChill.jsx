@@ -53,7 +53,7 @@ const AfricanConscienceChill = () => {
           >
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="text-white/90 text-sm font-medium tracking-widest uppercase">
-              Événement Phare · Hils Groupe
+              Événement Phare · Hils Company
             </span>
           </motion.div>
 
@@ -64,7 +64,7 @@ const AfricanConscienceChill = () => {
             className="text-5xl md:text-7xl font-black text-white leading-tight mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            African Conscience
+            African Conscious
             <br />
             <span className="text-gold">Chill</span>
           </motion.h1>
@@ -216,7 +216,7 @@ const AfricanConscienceChill = () => {
           <div className="text-center mb-16">
             <span className="text-gold font-bold text-sm uppercase tracking-widest">Notre Histoire</span>
             <h2 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Éditions <span className="text-gold">Précédentes</span>
+              Nos <span className="text-gold">Réalisations</span>
             </h2>
           </div>
 

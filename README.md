@@ -1,6 +1,6 @@
-# Hils Groupe - Site Web Officiel
+# Hils Company - Site Web Officiel
 
-Site web professionnel pour Hils Groupe présentant nos trois domaines d'activité : Communication, Tourisme et Événementiel.
+Site web professionnel pour Hils Company présentant nos trois domaines d'activité : Communication, Tourisme et Événementiel.
 
 ## 🚀 Technologies
 
@@ -110,7 +110,7 @@ hils-company/
 Créez un fichier `.env` :
 ```
 VITE_API_URL=https://api.example.com
-VITE_CONTACT_EMAIL=contact@hilsgroupe.com
+VITE_CONTACT_EMAIL=contact@hilsCompany.com
 ```
 
 ### Personnalisation
@@ -136,14 +136,14 @@ Le site est 100% responsive et optimisé pour :
 
 ## 📄 License
 
-© 2024 Hils Groupe. Tous droits réservés.
+© 2024 Hils Company. Tous droits réservés.
 
 ## 📞 Contact
 
-- **Email** : contact@hilsgroupe.com
-- **Site** : www.hilsgroupe.com
+- **Email** : contact@hilsCompany.com
+- **Site** : www.hilsCompany.com
 - **Téléphone** : +229 XX XX XX XX
 
 ---
 
-Développé avec ❤️ par Hils Groupe
+Développé avec ❤️ par Hils Company

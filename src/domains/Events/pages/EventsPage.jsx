@@ -287,9 +287,9 @@ const EventsPage = () => {
               <button className="px-10 py-4 bg-white text-primary rounded-2xl font-black hover:scale-105 transition-all shadow-xl">
                 Participer
               </button>
-              <button className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20">
+              {/* <button className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20">
                 Devenir partenaire
-              </button>
+              </button> */}
             </div>
           </motion.div>
         </div>

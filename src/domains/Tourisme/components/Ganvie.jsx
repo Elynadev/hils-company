@@ -142,7 +142,7 @@ const Ganvie = () => {
               {[
                 { icon: <MapPin size={18} className="text-gold" />, label: "Localisation", value: "Lac Nokoué, 12km de Cotonou" },
                 { icon: <Clock size={18} className="text-gold" />, label: "Durée recommandée", value: "Demi-journée à 2 jours" },
-                { icon: <Users size={18} className="text-gold" />, label: "Type de groupe", value: "Solo, couple, famille, groupe" },
+                { icon: <Users size={18} className="text-gold" />, label: "Type de Company", value: "Solo, couple, famille, Company" },
                 { icon: <Star size={18} className="text-gold" />, label: "Meilleure période", value: "Novembre à Février" },
               ].map((info) => (
                 <div key={info.label} className="flex items-start gap-4">

@@ -1,4 +1,4 @@
-# 🚀 Guide de Déploiement - Hils Groupe
+# 🚀 Guide de Déploiement - Hils Company
 
 ## Préparation avant déploiement
 
@@ -175,7 +175,7 @@ location / {
 ### Vercel
 
 1. Allez dans Project Settings > Domains
-2. Ajoutez votre domaine : `www.hilsgroupe.com`
+2. Ajoutez votre domaine : `www.hilsCompany.com`
 3. Configurez les DNS selon les instructions
 
 ### Netlify
@@ -243,7 +243,7 @@ npm run build
 ## 📞 Support
 
 Pour toute question :
-- Email : contact@hilsgroupe.com
+- Email : contact@hilsCompany.com
 - Documentation Vite : https://vitejs.dev
 - Documentation Vercel : https://vercel.com/docs
 - Documentation Netlify : https://docs.netlify.com

@@ -1,15 +1,10 @@
-import { useState } from "react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import PopUpModal from "./PopUpModal";
 
 const ContactCTA = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <section className="py-24 bg-bg px-6">
+    <section className="py-24 bg-[#f5f5f0] px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-accent to-primary p-12 md:p-16 shadow-2xl">
-
+        <div className="relative rounded-3xl overflow-hidden bg-secondary p-12 md:p-16">
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -18,14 +13,13 @@ const ContactCTA = () => {
             }}
           />
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-gold/30 blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-primary/30 blur-3xl" />
 
           <div className="relative z-10 text-center">
-
             <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-5 py-2 mb-8">
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
               <span className="text-white/90 text-sm font-medium tracking-widest uppercase">
-                Planifiez votre voyage
+                Démarrez votre projet
               </span>
             </div>
 
@@ -33,22 +27,17 @@ const ContactCTA = () => {
               className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Prêt pour votre
+              Prêt à faire passer votre
               <br />
-              <span className="text-gold">aventure africaine ?</span>
+              <span className="text-gold">communication au niveau supérieur ?</span>
             </h2>
 
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-              Notre équipe d'experts est à votre disposition pour concevoir
-              le voyage de vos rêves. Contactez-nous pour un devis
-              personnalisé et gratuit.
+              Notre équipe d'experts est à votre écoute pour concevoir une stratégie de communication sur mesure. Contactez-nous pour un devis personnalisé.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="flex items-center justify-center gap-3 bg-white text-secondary font-black px-10 py-4 rounded-full hover:scale-105 hover:shadow-xl transition-all duration-300"
-              >
+              <button className="flex items-center justify-center gap-3 bg-white text-secondary font-black px-10 py-4 rounded-full hover:scale-105 hover:shadow-xl transition-all duration-300">
                 Demander un devis gratuit
                 <ArrowRight size={18} />
               </button>
@@ -79,11 +68,6 @@ const ContactCTA = () => {
           </div>
         </div>
       </div>
-
-      <PopUpModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 };

@@ -1,42 +1,41 @@
-import { Plane, Hotel, Landmark, Leaf, Camera, HeartHandshake, ArrowRight } from "lucide-react";
+import { Users, Lightbulb, Handshake, Trophy, Briefcase, Sparkles, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    icon: Plane,
-    titre: "Voyages Organisés",
-    description: "Des circuits clé en main soigneusement planifiés pour une expérience sans stress. Transport, hébergement et activités inclus.",
+    icon: Users,
+    titre: "Networking Events",
+    description: "Événements de réseautage qui créent des connexions authentiques entre entrepreneurs et investisseurs.",
   },
   {
-    icon: Hotel,
-    titre: "Hébergement Premium",
-    description: "Sélection des meilleurs hôtels, lodges et écolodges pour un séjour confortable au cœur de l'authenticité africaine.",
+    icon: Lightbulb,
+    titre: "Conférences & Talks",
+    description: "Conférences inspirantes avec des leaders d'opinion et entrepreneurs à succès.",
   },
   {
-    icon: Landmark,
-    titre: "Tourisme Culturel",
-    description: "Immersion totale dans les traditions, festivals et cérémonies locales. Vivez l'Afrique de l'intérieur.",
+    icon: Handshake,
+    titre: "Matchmaking B2B",
+    description: "Mise en relation stratégique entre entreprises pour des partenariats gagnants.",
   },
   {
-    icon: Leaf,
-    titre: "Éco-tourisme",
-    description: "Découvrez la faune et la flore exceptionnelles de l'Afrique de l'Ouest dans le respect de l'environnement.",
+    icon: Trophy,
+    titre: "Compétitions Startup",
+    description: "Concours et pitch sessions pour identifier et soutenir les talents entrepreneuriaux.",
   },
   {
-    icon: Camera,
-    titre: "Tourisme Événementiel",
-    description: "Combinez voyage et événements : festivals, conférences, mariages et cérémonies traditionnelles.",
+    icon: Briefcase,
+    titre: "Ateliers & Formations",
+    description: "Sessions pratiques pour développer les compétences entrepreneuriales essentielles.",
   },
   {
-    icon: HeartHandshake,
-    titre: "Sur Mesure",
-    description: "Des expériences personnalisées selon vos envies, votre budget et votre calendrier. Votre voyage, vos règles.",
+    icon: Sparkles,
+    titre: "Événements Thématiques",
+    description: "Soirées et rencontres autour de thématiques spécifiques de l'écosystème africain.",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-primary via-accent to-primary relative overflow-hidden px-6">
-
+    <section className="py-24 bg-event-primary relative overflow-hidden px-6">
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -51,7 +50,6 @@ const Services = () => {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-
         <div className="text-center mb-16">
           <span className="text-gold font-bold text-sm uppercase tracking-widest">
             Ce que nous offrons
@@ -61,11 +59,10 @@ const Services = () => {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Nos Services{" "}
-            <span className="text-gold">Tourisme</span>
+            <span className="text-gold">Événementiels</span>
           </h2>
           <p className="text-white/60 text-lg max-w-xl mx-auto">
-            De la planification à l'expérience sur le terrain, nous prenons
-            soin de chaque détail de votre aventure africaine.
+            Des expériences qui transforment les rencontres en opportunités et les idées en succès.
           </p>
         </div>
 
@@ -75,9 +72,9 @@ const Services = () => {
             return (
               <div
                 key={index}
-                className="group bg-white/5 hover:bg-white/10 border-2 border-white/10 hover:border-gold rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 cursor-pointer backdrop-blur-sm"
+                className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center mb-6 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-event-secondary transition-all duration-300">
                   <Icon size={28} className="text-gold group-hover:text-white transition-colors duration-300" />
                 </div>
 

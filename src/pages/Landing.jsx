@@ -7,7 +7,7 @@ export default function Landing() {
       title: "Hils Company",
       subtitle: "Communication & Événementiel",
       description: "Stratégies de communication innovantes et organisation d'événements d'exception pour marquer les esprits.",
-      icon: "📢",
+      icon: "",
       link: "/communication",
     },
     {

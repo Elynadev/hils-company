@@ -1,0 +1,16 @@
+# API Configuration (optionnel)
+VITE_API_URL=https://api.hilsCompany.com
+
+# Contact Information
+VITE_CONTACT_EMAIL=contact@hilsCompany.com
+VITE_CONTACT_PHONE=+229XXXXXXXXX
+
+# Analytics (optionnel)
+VITE_GA_TRACKING_ID=
+
+# Social Media (optionnel)
+VITE_FACEBOOK_URL=
+VITE_INSTAGRAM_URL=
+VITE_LINKEDIN_URL=
+VITE_TWITTER_URL=
+

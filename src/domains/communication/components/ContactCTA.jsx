@@ -42,7 +42,7 @@ const ContactCTA = () => {
                 <ArrowRight size={18} />
               </button>
               <a 
-                href="tel:+22900000000"
+                href="tel:+2290195416626"
                 className="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300"
               >
                 <Phone size={18} />
@@ -52,9 +52,9 @@ const ContactCTA = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center border-t border-white/20 pt-8">
               {[
-                { icon: <Mail size={16} />, text: "contact@hilscompany.com" },
-                { icon: <MapPin size={16} />, text: "Cotonou, Bénin" },
-                { icon: <Phone size={16} />, text: "Lun - Sam, 8h - 18h" },
+                { icon: <Mail size={16} />, text: "hilscompany15@gmail.com" },
+                { icon: <MapPin size={16} />, text: "Godomey Togoudo, Bénin" },
+                { icon: <Phone size={16} />, text: "+229 01 95 41 66 26" },
               ].map((info) => (
                 <div
                   key={info.text}

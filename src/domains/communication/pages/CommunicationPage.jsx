@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 import { motion } from "framer-motion";
-import { Award, Users, Target, Zap, CheckCircle, TrendingUp, Briefcase, Star } from "lucide-react";
+import { Award, Users, Target, Zap, CheckCircle, TrendingUp, Briefcase, Star, ArrowRight } from "lucide-react";
 import abidjanImg from "../../../assets/img/abidjan.jpg";
 import cotounouImg from "../../../assets/img/cotonou.jpg";
 import accraImg from "../../../assets/img/accra.jpg";
@@ -40,89 +40,111 @@ const CommunicationPage = () => {
     { name: "Fatou Diop", role: "Fondatrice, GreenTech", text: "Grâce à leur stratégie digitale, nous avons triplé notre visibilité en 6 mois." },
   ];
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white font-sans">
       <Hero />
       <Services />
 
       {/* Notre Approche */}
-      <section className="py-24 bg-white px-6">
+      <section className="py-24 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Notre Méthode</span>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Un Processus <span className="text-gold">Éprouvé</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Notre Méthode
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Un Processus Éprouvé
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               De l'écoute à l'optimisation, nous vous accompagnons à chaque étape de votre projet.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6"
+          >
             {process.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
                 className="relative"
               >
-                <div className="bg-primary/5 rounded-3xl p-6 border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all h-full">
-                  <div className="text-5xl font-black text-gold/20 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all h-full">
+                  <div className="text-4xl lg:text-5xl font-black text-teal-200 mb-4">
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-black text-primary mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg lg:text-xl font-bold text-teal-900 mb-3">{item.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
                 </div>
                 {index < process.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gold/30" />
+                  <div className="hidden md:block absolute top-1/2 -right-2 lg:-right-3 w-4 lg:w-6 h-0.5 bg-teal-200" />
                 )}
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Réalisations */}
-      <section className="py-24 bg-bg px-6">
+      <section className="py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Notre Excellence</span>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Pourquoi <span className="text-gold">Nous Choisir</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Notre Excellence
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Pourquoi Nous Choisir
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          >
             {achievements.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-3xl p-8 text-center border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all"
+                  variants={fadeInUp}
+                  className="bg-white rounded-xl p-8 text-center border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Icon size={32} className="text-gold" />
+                  <div className="w-16 h-16 rounded-xl bg-teal-50 flex items-center justify-center mx-auto mb-4">
+                    <Icon size={32} className="text-teal-700" />
                   </div>
-                  <h3 className="text-xl font-black text-primary mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-teal-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600 text-sm">{item.desc}</p>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-black text-primary mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Une Expertise <span className="text-gold">Reconnue</span>
+            <motion.div {...fadeInUp}>
+              <h3 className="text-3xl font-black text-teal-900 mb-6">
+                Une Expertise Reconnue
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Depuis plus de 10 ans, Hils Company accompagne les entreprises, institutions et organisations dans leur développement et leur rayonnement.
+              <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                Depuis plus de 3 ans, Hils Company accompagne les entreprises, institutions et organisations dans leur développement et leur rayonnement.
               </p>
               <ul className="space-y-4">
                 {[
@@ -133,123 +155,175 @@ const CommunicationPage = () => {
                   "Approche data-driven et orientée résultats",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle size={20} className="text-gold mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
+                    <CheckCircle size={20} className="text-teal-600 mt-1 flex-shrink-0" />
+                    <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-gold to-primary rounded-3xl transform rotate-3 opacity-20"></div>
-              <div className="relative rounded-3xl overflow-hidden h-96 shadow-2xl">
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative">
+              <div className="absolute inset-0 bg-teal-200 rounded-2xl transform rotate-3" />
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-200 shadow-xl">
                 <img src={heroImg} alt="Notre équipe" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent flex items-end p-6">
+                  <p className="text-white font-bold">Notre équipe en action</p>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Portfolio */}
-      <section className="py-24 bg-white px-6">
+      <section className="py-24 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Nos Réalisations</span>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Portfolio <span className="text-gold">Récent</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Nos Réalisations
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Portfolio Récent
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Découvrez quelques-uns de nos projets qui ont marqué les esprits et généré des résultats concrets.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {portfolio.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border-2 border-primary/10 hover:border-gold"
+                variants={fadeInUp}
+                className="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-teal-300 hover:shadow-xl transition-all"
               >
-                <div className="h-64 overflow-hidden relative">
-                  <img src={project.img} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="h-56 overflow-hidden relative">
+                  <img src={project.img} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <ArrowRight size={20} className="text-white" />
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-black text-primary mb-2">{project.title}</h3>
-                  <p className="text-gold text-sm font-bold mb-3">{project.client}</p>
-                  <p className="text-gray-600 text-sm">{project.desc}</p>
+                  <h3 className="text-xl font-bold text-teal-900 mb-2">{project.title}</h3>
+                  <p className="text-teal-600 text-sm font-semibold mb-3">{project.client}</p>
+                  <p className="text-slate-600 text-sm">{project.desc}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Témoignages */}
-      <section className="py-24 bg-bg px-6">
+      {/* <section className="py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Témoignages</span>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Ils Nous Font <span className="text-gold">Confiance</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Témoignages
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Ils Nous Font Confiance
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white rounded-3xl p-8 border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all"
+                variants={fadeInUp}
+                className="bg-white rounded-xl p-8 border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all"
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} className="fill-gold text-gold" />
+                    <Star key={i} size={16} className="text-teal-600 fill-teal-600" />
                   ))}
                 </div>
-                <p className="text-gray-700 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-slate-700 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
-                    <Users size={20} className="text-gold" />
+                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-teal-200">
+                    <img src={abidjanImg} alt={testimonial.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <p className="font-bold text-primary">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                    <p className="font-bold text-teal-900">{testimonial.name}</p>
+                    <p className="text-sm text-slate-500">{testimonial.role}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-primary via-accent to-secondary relative overflow-hidden px-6">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
-          backgroundSize: "30px 30px",
-        }} />
+      <section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }} />
+        </div>
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-slate-700/20 blur-3xl" />
         
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Prêt à transformer votre <span className="text-gold">communication ?</span>
-          </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-10"
+          >
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="text-white text-sm font-bold tracking-wide uppercase">
+              Passons à l'action
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-8 leading-tight"
+          >
+            Prêt à transformer votre communication ?
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
             Contactez-nous pour discuter de votre projet et découvrir comment nous pouvons vous aider à atteindre vos objectifs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 bg-white text-primary font-black rounded-full hover:scale-105 transition-all shadow-xl">
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <button className="px-10 py-4 bg-white text-teal-900 font-bold rounded-lg hover:bg-teal-50 transition-all inline-flex items-center justify-center gap-2">
               Démarrer un projet
+              <ArrowRight size={18} />
             </button>
-            <button className="px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all">
+            <button className="px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-bold rounded-lg hover:bg-white/20 transition-all">
               Voir nos tarifs
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

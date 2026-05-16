@@ -254,8 +254,8 @@ export default function Landing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { nb: "3+", label: "Années d'expérience" },
-              { nb: "100+", label: "Événements organisés" },
-              { nb: "20+", label: "Destinations" },
+              { nb: "25+", label: "Événements organisés" },
+              { nb: "+5", label: "Destinations" },
               { nb: "500+", label: "Entrepreneurs connectés" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">

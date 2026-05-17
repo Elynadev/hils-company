@@ -94,22 +94,22 @@ const Testimonials = () => {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden ring-2 ring-teal-200 flex-shrink-0">
+                {/* <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden ring-2 ring-teal-200 flex-shrink-0">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                </div>
-                <div className="min-w-0">
+                </div> */}
+                {/* <div className="min-w-0">
                   <p className="font-bold text-teal-900 text-sm lg:text-base truncate">
                     {testimonial.name}
                   </p>
                   <p className="text-xs lg:text-sm text-slate-500 truncate">
                     {testimonial.role}
                   </p>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           ))}

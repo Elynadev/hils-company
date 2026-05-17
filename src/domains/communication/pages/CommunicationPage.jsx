@@ -8,7 +8,7 @@ import cotounouImg from "../../../assets/img/cotonou.jpg";
 import accraImg from "../../../assets/img/accra.jpg";
 import dakarImg from "../../../assets/img/dakar.jpg";
 import lomeImg from "../../../assets/img/lome.jpg";
-import heroImg from "../../../assets/img/hero-bg.jpg";
+import heroImg from "../../../assets/img/equipe.jpg";
 
 const CommunicationPage = () => {
   const achievements = [
@@ -145,12 +145,12 @@ const CommunicationPage = () => {
                 Une Expertise Reconnue
               </h3>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                Depuis plus de 3 ans, Hils Company accompagne les entreprises, institutions et organisations dans leur développement et leur rayonnement.
+                Depuis plus de 2 ans, Hils Company accompagne les entreprises, institutions et organisations dans leur développement et leur rayonnement.
               </p>
               <ul className="space-y-4">
                 {[
                   "Équipe pluridisciplinaire de 15+ experts",
-                  "200+ projets réalisés avec succès",
+                  "30+ projets réalisés avec succès",
                   "Présence dans 5 pays africains",
                   "Partenariats avec les plus grandes marques",
                   "Approche data-driven et orientée résultats",
@@ -176,7 +176,7 @@ const CommunicationPage = () => {
       </section>
 
       {/* Portfolio */}
-      <section className="py-24 bg-white px-4 sm:px-6">
+      {/* <section className="py-24 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
@@ -218,7 +218,7 @@ const CommunicationPage = () => {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Témoignages */}
       {/* <section className="py-24 bg-slate-50 px-4 sm:px-6">

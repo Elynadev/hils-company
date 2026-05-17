@@ -100,10 +100,10 @@ const Services = () => {
                 </p>
 
                 {/* CTA Link */}
-                <div className="flex items-center gap-2 text-teal-700 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
+                {/* <div className="flex items-center gap-2 text-teal-700 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
                   <span>En savoir plus</span>
                   <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
-                </div>
+                </div> */}
               </motion.div>
             );
           })}

@@ -12,6 +12,10 @@ import cotounouImg from "../../../assets/img/cotonou.jpg";
 import accraImg from "../../../assets/img/accra.jpg";
 import dakarImg from "../../../assets/img/dakar.jpg";
 import lomeImg from "../../../assets/img/lome.jpg";
+import Hotesse1Img from "../../../assets/img/Hotesse1.jpg";
+import hotesse2Img from "../../../assets/img/hotesse2.jpg";
+import hotesse3Img from "../../../assets/img/hotesse3.jpg";
+import hotesse4Img from "../../../assets/img/hotesse4.jpg";
 import heroImg from "../../../assets/img/hero-bg.jpg";
 import hilsLogo from "../../../assets/img/hils-logo.png";
 
@@ -63,7 +67,7 @@ const EventsPage = () => {
   ];
 
   const advantages = [
-    { icon: Award, title: "Expertise", desc: "10+ ans d'expérience en événementiel" },
+    { icon: Award, title: "Expertise", desc: "2 + ans d'expérience en événementiel" },
     { icon: Users, title: "Équipe", desc: "20+ professionnels dédiés" },
     { icon: Target, title: "Résultats", desc: "98% de satisfaction client" },
     { icon: Zap, title: "Innovation", desc: "Technologies événementielles de pointe" },
@@ -76,6 +80,13 @@ const EventsPage = () => {
     "Formation et briefing personnalisés",
     "Tenues et présentation soignées",
     "Disponibilité 24/7 pour vos événements",
+  ];
+
+  const hostessImages = [
+    { src: Hotesse1Img, label: "Hôtesses d'accueil" },
+    { src: hotesse2Img, label: "Animation événementielle" },
+    { src: hotesse3Img, label: "Interventions terrain" },
+    { src: hotesse4Img, label: "Coordination & logistique" },
   ];
 
   // Animation variants cohérents avec le reste du site
@@ -373,10 +384,10 @@ const EventsPage = () => {
                   </div>
                   <h3 className="text-xl font-bold text-teal-900 mb-3">{service.titre}</h3>
                   <p className="text-slate-600 leading-relaxed mb-4 text-sm">{service.description}</p>
-                  <div className="flex items-center gap-2 text-teal-700 font-semibold group-hover:gap-3 transition-all">
+                  {/* <div className="flex items-center gap-2 text-teal-700 font-semibold group-hover:gap-3 transition-all">
                     <span>Découvrir</span>
                     <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </div> */}
                 </motion.div>
               );
             })}
@@ -424,7 +435,7 @@ const EventsPage = () => {
       </section>
 
       {/* ===== ÉDITIONS PASSÉES ===== */}
-      <section className="py-24 bg-slate-50 px-4 sm:px-6">
+      {/* <section className="py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
@@ -473,7 +484,7 @@ const EventsPage = () => {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* ===== SERVICES HÔTESSES ===== */}
       <section className="py-24 bg-white px-4 sm:px-6">
@@ -504,16 +515,23 @@ const EventsPage = () => {
               transition={{ delay: 0.2 }}
               className="grid grid-cols-2 gap-4"
             >
-              {[lomeImg, accraImg, dakarImg, heroImg].map((img, index) => (
+              {hostessImages.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-xl overflow-hidden shadow-lg aspect-square"
+                  className="relative rounded-xl overflow-hidden shadow-lg aspect-square"
                 >
-                  <img src={img} alt={`Service ${index + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 to-transparent p-4">
+                    <p className="text-white font-semibold text-sm sm:text-base">{item.label}</p>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

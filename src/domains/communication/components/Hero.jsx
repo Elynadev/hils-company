@@ -274,9 +274,9 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-8 sm:gap-12 pt-8 border-t border-white/10"
           >
             {[
-              { nb: "200+", label: "Projets réalisés" },
-              { nb: "50+", label: "Événements organisés" },
-              { nb: "100%", label: "Satisfaction client" },
+              { nb: "10+", label: "Projets réalisés" },
+              { nb: "25+", label: "Événements organisés" },
+              { nb: "98%", label: "Satisfaction client" },
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label} 

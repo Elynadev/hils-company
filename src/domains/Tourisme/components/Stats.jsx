@@ -4,10 +4,10 @@ import { Award, Users, MapPin, Star, CheckCircle, Globe, Heart, Shield } from "l
 
 const Stats = () => {
   const stats = [
-    { icon: Globe, number: "20+", label: "Destinations", description: "À travers l'Afrique de l'Ouest" },
-    { icon: Users, number: "500+", label: "Voyageurs", description: "Nous font confiance" },
-    { icon: Award, number: "3+", label: "Années", description: "D'expertise terrain" },
-    { icon: Star, number: "4.9/5", label: "Satisfaction", description: "Note moyenne clients" },
+    { icon: Globe, number: "10+", label: "Destinations", description: "À travers l'Afrique de l'Ouest" },
+    { icon: Users, number: "150+", label: "Voyageurs", description: "Nous font confiance" },
+    { icon: Award, number: "5+", label: "Années", description: "D'expertise terrain" },
+    { icon: Star, number: "4.5/5", label: "Satisfaction", description: "Note moyenne clients" },
   ];
 
   // Animation variants cohérents avec le reste du site

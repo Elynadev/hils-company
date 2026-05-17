@@ -344,7 +344,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto pt-20">
         
         {/* Badge */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -354,7 +354,7 @@ const Hero = () => {
           <span className="text-white text-sm font-bold tracking-wide uppercase">
             Hils Company · Tourisme
           </span>
-        </motion.div>
+        </motion.div> */}
 
         {/* Title */}
         <motion.h1
@@ -380,91 +380,10 @@ const Hero = () => {
         </motion.p>
 
         {/* Search Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-white rounded-xl p-2 flex flex-col md:flex-row gap-2 max-w-3xl mx-auto shadow-2xl mb-12"
-        >
-          {/* Destination */}
-          <div className="flex items-center gap-3 flex-1 px-4 py-3 border-b md:border-b-0 md:border-r border-slate-200">
-            <MapPin size={18} className="text-teal-600 flex-shrink-0" />
-            <div className="flex-1 text-left">
-              <p className="text-xs text-slate-400 font-medium">Destination</p>
-              <input
-                type="text"
-                value={searchQuery.destination}
-                onChange={(e) =>
-                  setSearchQuery({ ...searchQuery, destination: e.target.value })
-                }
-                placeholder="Ganvié, Bénin..."
-                className="text-sm text-slate-800 font-semibold w-full focus:outline-none placeholder:text-slate-300"
-              />
-            </div>
-          </div>
-
-          {/* Periode */}
-          <div className="flex items-center gap-3 flex-1 px-4 py-3 border-b md:border-b-0 md:border-r border-slate-200">
-            <Calendar size={18} className="text-teal-600 flex-shrink-0" />
-            <div className="flex-1 text-left">
-              <p className="text-xs text-slate-400 font-medium">Période</p>
-              <input
-                type="date"
-                value={searchQuery.periode}
-                onChange={(e) =>
-                  setSearchQuery({ ...searchQuery, periode: e.target.value })
-                }
-                className="text-sm text-slate-800 font-semibold w-full focus:outline-none"
-              />
-            </div>
-          </div>
-
-          {/* Type */}
-          <div className="flex items-center gap-3 flex-1 px-4 py-3">
-            <Compass size={18} className="text-teal-600 flex-shrink-0" />
-            <div className="flex-1 text-left">
-              <p className="text-xs text-slate-400 font-medium">Type</p>
-              <select
-                value={searchQuery.type}
-                onChange={(e) =>
-                  setSearchQuery({ ...searchQuery, type: e.target.value })
-                }
-                className="text-sm text-slate-800 font-semibold w-full focus:outline-none bg-transparent cursor-pointer"
-              >
-                <option value="">Tout type</option>
-                <option value="Culture">Culture</option>
-                <option value="Plage">Plage</option>
-                <option value="Histoire">Histoire</option>
-                <option value="Nature">Nature</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Search Button */}
-          <button
-            onClick={() => {
-              if (searchQuery.destination || searchQuery.type) {
-                setShowResults(true);
-              }
-            }}
-            className="flex items-center justify-center gap-2 px-6 lg:px-8 py-3 bg-teal-900 text-white rounded-lg hover:bg-teal-800 transition-all font-semibold text-sm"
-          >
-            {isSearching ? (
-              <>
-                <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                Recherche...
-              </>
-            ) : (
-              <>
-                <Search size={18} />
-                <span className="hidden sm:inline">Rechercher</span>
-              </>
-            )}
-          </button>
-        </motion.div>
+       
 
         {/* Stats */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -490,7 +409,7 @@ const Hero = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
       </div>
 

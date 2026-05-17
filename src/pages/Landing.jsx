@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 
 // Images
 import heroImg from '../assets/img/hero-bg.jpg';
-import abidjanImg from '../assets/img/abidjan.jpg';
+import abidjanImg from '../assets/img/ACC.jpg';
 import cotounouImg from '../assets/img/cotonou.jpg';
-import accraImg from '../assets/img/accra.jpg';
+import accraImg from '../assets/img/hotesse4.jpg';
 import dakarImg from '../assets/img/dakar.jpg';
 import lomeImg from '../assets/img/lome.jpg';
 import hilsLogo from '../assets/img/hils-logo.png';
@@ -140,7 +140,7 @@ const flipCards = [
           <Award size={40} className="text-teal-700" />
         </div>
         <h3 className="text-3xl lg:text-4xl font-black text-teal-900 mb-3">Excellence</h3>
-        <p className="text-slate-500 font-medium text-lg">3 ans d'expérience terrain</p>
+        <p className="text-slate-500 font-medium text-lg">2 ans d'expérience terrain</p>
       </div>
     ),
     back: (
@@ -155,7 +155,7 @@ const flipCards = [
         <ul className="space-y-3">
           {[
             "Stratégies sur mesure adaptées à votre marché",
-            "Équipe pluridisciplinaire d'experts",
+            // "Équipe pluridisciplinaire d'experts",
             
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
@@ -188,7 +188,7 @@ const flipCards = [
         </p>
         <ul className="space-y-3">
           {[
-            "Experts certifiés dans chaque domaine",
+            // "Experts certifiés dans chaque domaine",
             "Engagement et disponibilité totale"
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
@@ -223,7 +223,7 @@ const flipCards = [
           {[
             "Réseau de partenaires locaux fiables",
            
-            "Intervention rapide sur toute la sous-région"
+            // "Intervention rapide sur toute la sous-région"
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
               <CheckCircle size={18} className="text-teal-400 mt-0.5 flex-shrink-0" />
@@ -820,9 +820,9 @@ const flipCards = [
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden ring-2 ring-teal-200 flex-shrink-0">
+                  {/* <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden ring-2 ring-teal-200 flex-shrink-0">
                     <img src={testimonial.avatar} alt={testimonial.author} className="w-full h-full object-cover" />
-                  </div>
+                  </div> */}
                   <div className="min-w-0">
                     <p className="font-bold text-teal-900 text-sm lg:text-lg truncate">{testimonial.author}</p>
                     <p className="text-xs lg:text-sm text-slate-500 truncate">{testimonial.role}</p>

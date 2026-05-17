@@ -132,116 +132,109 @@ export default function Landing() {
     { title: "Suivi & Optimisation", description: "Analyse des résultats et amélioration continue", duration: "Continu", icon: Award },
   ];
 
-  const flipCards = [
-    {
-      front: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-teal-100 flex items-center justify-center mb-4">
-            <Award size={32} className="text-teal-700" />
-          </div>
-          <h3 className="text-2xl font-bold text-teal-900 mb-2">Excellence</h3>
-          <p className="text-slate-500 text-sm">3 ans d'expérience</p>
-        </>
-      ),
-      back: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
-            <Award size={32} className="text-white" />
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-4">Notre Expertise</h3>
-          <p className="text-white/90 text-sm leading-relaxed mb-4">
-            Plus de 50 projets réalisés avec succès pour des clients ambitieux à travers l'Afrique.
-          </p>
-          <ul className="text-left space-y-2">
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Stratégies sur mesure adaptées à votre marché</span>
+const flipCards = [
+  {
+    front: (
+      <div className="flex flex-col items-center justify-center h-full text-center px-6">
+        <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 shadow-lg shadow-teal-900/10">
+          <Award size={40} className="text-teal-700" />
+        </div>
+        <h3 className="text-3xl lg:text-4xl font-black text-teal-900 mb-3">Excellence</h3>
+        <p className="text-slate-500 font-medium text-lg">3 ans d'expérience terrain</p>
+      </div>
+    ),
+    back: (
+      <div className="flex flex-col justify-center h-full px-6 lg:px-8">
+        <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+          <Award size={28} className="text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">Notre Expertise</h3>
+        <p className="text-white/80 text-base leading-relaxed mb-6">
+          Plus de 50 projets réalisés avec succès pour des clients ambitieux à travers l'Afrique.
+        </p>
+        <ul className="space-y-3">
+          {[
+            "Stratégies sur mesure adaptées à votre marché",
+            "Équipe pluridisciplinaire d'experts",
+            
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
+              <CheckCircle size={18} className="text-teal-400 mt-0.5 flex-shrink-0" />
+              <span>{item}</span>
             </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Équipe pluridisciplinaire d'experts</span>
+          ))}
+        </ul>
+      </div>
+    ),
+  },
+  {
+    front: (
+      <div className="flex flex-col items-center justify-center h-full text-center px-6">
+        <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 shadow-lg shadow-teal-900/10">
+          <Users size={40} className="text-teal-700" />
+        </div>
+        <h3 className="text-3xl lg:text-4xl font-black text-teal-900 mb-3">Équipe</h3>
+        <p className="text-slate-500 font-medium text-lg">10+ professionnels dédiés</p>
+      </div>
+    ),
+    back: (
+      <div className="flex flex-col justify-center h-full px-6 lg:px-8">
+        <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+          <Users size={28} className="text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">Talents Passionnés</h3>
+        <p className="text-white/80 text-base leading-relaxed mb-6">
+          Une équipe pluridisciplinaire d'experts en communication, événementiel et tourisme.
+        </p>
+        <ul className="space-y-3">
+          {[
+            "Experts certifiés dans chaque domaine",
+            "Engagement et disponibilité totale"
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
+              <CheckCircle size={18} className="text-teal-400 mt-0.5 flex-shrink-0" />
+              <span>{item}</span>
             </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Méthodologie éprouvée et résultats garantis</span>
+          ))}
+        </ul>
+      </div>
+    ),
+  },
+  {
+    front: (
+      <div className="flex flex-col items-center justify-center h-full text-center px-6">
+        <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 shadow-lg shadow-teal-900/10">
+          <Globe size={40} className="text-teal-700" />
+        </div>
+        <h3 className="text-3xl lg:text-4xl font-black text-teal-900 mb-3">Présence</h3>
+        <p className="text-slate-500 font-medium text-lg">5 pays africains couverts</p>
+      </div>
+    ),
+    back: (
+      <div className="flex flex-col justify-center h-full px-6 lg:px-8">
+        <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+          <Globe size={28} className="text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">Rayonnement</h3>
+        <p className="text-white/80 text-base leading-relaxed mb-6">
+          Présents au Bénin, Côte d'Ivoire, Ghana, Sénégal et Togo pour vous servir.
+        </p>
+        <ul className="space-y-3">
+          {[
+            "Réseau de partenaires locaux fiables",
+           
+            "Intervention rapide sur toute la sous-région"
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-white/85 text-sm sm:text-base">
+              <CheckCircle size={18} className="text-teal-400 mt-0.5 flex-shrink-0" />
+              <span>{item}</span>
             </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      front: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-teal-100 flex items-center justify-center mb-4">
-            <Users size={32} className="text-teal-700" />
-          </div>
-          <h3 className="text-2xl font-bold text-teal-900 mb-2">Équipe</h3>
-          <p className="text-slate-500 text-sm">10+ professionnels</p>
-        </>
-      ),
-      back: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
-            <Users size={32} className="text-white" />
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-4">Talents Passionnés</h3>
-          <p className="text-white/90 text-sm leading-relaxed mb-4">
-            Une équipe pluridisciplinaire d'experts en communication, événementiel et tourisme.
-          </p>
-          <ul className="text-left space-y-2">
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Experts certifiés dans chaque domaine</span>
-            </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Formation continue et veille sectorielle</span>
-            </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Engagement et disponibilité totale</span>
-            </li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      front: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-teal-100 flex items-center justify-center mb-4">
-            <Globe size={32} className="text-teal-700" />
-          </div>
-          <h3 className="text-2xl font-bold text-teal-900 mb-2">Présence</h3>
-          <p className="text-slate-500 text-sm">5 pays africains</p>
-        </>
-      ),
-      back: (
-        <>
-          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
-            <Globe size={32} className="text-white" />
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-4">Rayonnement</h3>
-          <p className="text-white/90 text-sm leading-relaxed mb-4">
-            Présents au Bénin, Côte d'Ivoire, Ghana, Sénégal et Togo pour vous servir.
-          </p>
-          <ul className="text-left space-y-2">
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Réseau de partenaires locaux fiables</span>
-            </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Connaissance approfondie des marchés</span>
-            </li>
-            <li className="flex items-start gap-2 text-white/80 text-sm">
-              <CheckCircle size={14} className="text-teal-400 mt-0.5 flex-shrink-0" />
-              <span>Intervention rapide sur toute la sous-région</span>
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ];
+          ))}
+        </ul>
+      </div>
+    ),
+  },
+];
 
   const testimonials = [
     {
@@ -971,83 +964,85 @@ export default function Landing() {
       </section>
 
       {/* ===== FLIP CARDS SECTION ===== */}
-      <section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
-        {/* Background decorative text */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 text-7xl lg:text-8xl font-black text-white/5 select-none hidden lg:block">
-            EXCELLENCE
+     {/* ===== FLIP CARDS SECTION ===== */}
+<section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
+  {/* Background decorative text */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-20 left-10 text-7xl lg:text-8xl font-black text-white/5 select-none hidden lg:block">
+      EXCELLENCE
+    </div>
+    <div className="absolute bottom-20 right-10 text-7xl lg:text-8xl font-black text-white/5 select-none hidden lg:block">
+      INNOVATION
+    </div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl lg:text-9xl font-black text-white/5 select-none hidden xl:block">
+      ENGAGEMENT
+    </div>
+  </div>
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    <motion.div {...fadeInUp} className="text-center mb-16">
+      <span className="inline-block px-4 py-2 bg-white/10 text-white font-bold text-xs uppercase tracking-wider rounded-full mb-4 backdrop-blur-sm">
+        Pourquoi Nous
+      </span>
+      <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-6">
+        Notre Différence
+      </h2>
+      <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed">
+        Découvrez les valeurs et l'expertise qui font de HILS Company 
+        un partenaire de confiance pour vos projets les plus ambitieux.
+      </p>
+    </motion.div>
+
+    {/* FlipCards - Taille augmentée & adaptation au contenu */}
+    <motion.div 
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+    >
+      {flipCards.map((card, index) => (
+        <motion.div 
+          key={index} 
+          variants={fadeInUp}
+          className="w-full"
+        >
+          {/* Suppression de max-w-sm et aspect-[3/4] pour laisser le contenu définir la taille */}
+          <div className="w-full min-h-[520px] lg:min-h-[640px] h-auto relative">
+            <FlipCard front={card.front} back={card.back} />
           </div>
-          <div className="absolute bottom-20 right-10 text-7xl lg:text-8xl font-black text-white/5 select-none hidden lg:block">
-            INNOVATION
-          </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl lg:text-9xl font-black text-white/5 select-none hidden xl:block">
-            ENGAGEMENT
-          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+
+    {/* Bottom description */}
+    <motion.div {...fadeInUp} className="mt-16 text-center max-w-4xl mx-auto px-4">
+      <p className="text-white/70 text-lg leading-relaxed mb-6">
+        Chez HILS Company, nous croyons en l'excellence opérationnelle et à l'innovation constante. 
+        Notre approche sur mesure et notre connaissance approfondie du marché africain nous permettent 
+        de délivrer des résultats exceptionnels.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4 lg:gap-6 text-white/60 text-sm">
+        <div className="flex items-center gap-2">
+          <CheckCircle size={16} className="text-teal-400" />
+          <span>Expertise reconnue</span>
         </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-white/10 text-white font-bold text-xs uppercase tracking-wider rounded-full mb-4 backdrop-blur-sm">
-              Pourquoi Nous
-            </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-6">
-              Notre Différence
-            </h2>
-            <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed">
-              Découvrez les valeurs et l'expertise qui font de HILS Company 
-              un partenaire de confiance pour vos projets les plus ambitieux.
-            </p>
-          </motion.div>
-
-          {/* FlipCards */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-          >
-            {flipCards.map((card, index) => (
-              <motion.div 
-                key={index} 
-                variants={fadeInUp}
-                className="w-full max-w-sm mx-auto"
-              >
-                <div className="w-full aspect-[3/4]">
-                  <FlipCard front={card.front} back={card.back} />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Bottom description */}
-          <motion.div {...fadeInUp} className="mt-16 text-center max-w-4xl mx-auto px-4">
-            <p className="text-white/70 text-lg leading-relaxed mb-6">
-              Chez HILS Company, nous croyons en l'excellence opérationnelle et à l'innovation constante. 
-              Notre approche sur mesure et notre connaissance approfondie du marché africain nous permettent 
-              de délivrer des résultats exceptionnels.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 lg:gap-6 text-white/60 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-teal-400" />
-                <span>Expertise reconnue</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-teal-400" />
-                <span>Accompagnement personnalisé</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-teal-400" />
-                <span>Résultats mesurables</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-teal-400" />
-                <span>Réseau panafricain</span>
-              </div>
-            </div>
-          </motion.div>
+        <div className="flex items-center gap-2">
+          <CheckCircle size={16} className="text-teal-400" />
+          <span>Accompagnement personnalisé</span>
         </div>
-      </section>
+        <div className="flex items-center gap-2">
+          <CheckCircle size={16} className="text-teal-400" />
+          <span>Résultats mesurables</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <CheckCircle size={16} className="text-teal-400" />
+          <span>Réseau panafricain</span>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* ===== FORMS SECTION ===== */}
       <section id="formulaires" className="py-24 bg-white px-4 sm:px-6">

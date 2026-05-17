@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import Services from "../components/Services";
+import ContactCTA from "../components/ContactCTA";
 import { motion } from "framer-motion";
 import { Award, Users, Target, Zap, CheckCircle, TrendingUp, Briefcase, Star, ArrowRight } from "lucide-react";
 import abidjanImg from "../../../assets/img/abidjan.jpg";
@@ -265,67 +266,7 @@ const CommunicationPage = () => {
         </div>
       </section> */}
 
-      {/* CTA */}
-      <section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }} />
-        </div>
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-slate-700/20 blur-3xl" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-10"
-          >
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            <span className="text-white text-sm font-bold tracking-wide uppercase">
-              Passons à l'action
-            </span>
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-8 leading-tight"
-          >
-            Prêt à transformer votre communication ?
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
-          >
-            Contactez-nous pour discuter de votre projet et découvrir comment nous pouvons vous aider à atteindre vos objectifs.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <button className="px-10 py-4 bg-white text-teal-900 font-bold rounded-lg hover:bg-teal-50 transition-all inline-flex items-center justify-center gap-2">
-              Démarrer un projet
-              <ArrowRight size={18} />
-            </button>
-            <button className="px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-bold rounded-lg hover:bg-white/20 transition-all">
-              Voir nos tarifs
-            </button>
-          </motion.div>
-        </div>
-      </section>
+      <ContactCTA />
     </div>
   );
 };

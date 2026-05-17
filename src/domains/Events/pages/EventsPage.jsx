@@ -1,14 +1,52 @@
-import { motion } from "framer-motion";
+// pages/EventsPage.jsx
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Lightbulb, Handshake, Trophy, Briefcase, Sparkles, Home, Zap, Star, Calendar, MapPin, ArrowRight, CheckCircle, Award, Target } from "lucide-react";
+import { 
+  Users, Lightbulb, Handshake, Trophy, Briefcase, Sparkles, Home, 
+  Zap, Star, Calendar, MapPin, ArrowRight, CheckCircle, Award, 
+  Target, Menu, X, ChevronDown, Megaphone, Compass
+} from "lucide-react";
 import abidjanImg from "../../../assets/img/abidjan.jpg";
 import cotounouImg from "../../../assets/img/cotonou.jpg";
 import accraImg from "../../../assets/img/accra.jpg";
 import dakarImg from "../../../assets/img/dakar.jpg";
 import lomeImg from "../../../assets/img/lome.jpg";
 import heroImg from "../../../assets/img/hero-bg.jpg";
+import hilsLogo from "../../../assets/img/hils-logo.png";
 
 const EventsPage = () => {
+  // États pour la navbar
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleRouteChange = () => setIsMenuOpen(false);
+    window.addEventListener('hashchange', handleRouteChange);
+    return () => window.removeEventListener('hashchange', handleRouteChange);
+  }, []);
+
+  const navItems = [
+    { label: "Accueil", href: "/" },
+    { 
+      label: "Services", 
+      dropdown: [
+        { label: "Communication", href: "/communication", icon: Megaphone },
+        { label: "Tourisme", href: "/tourisme", icon: Compass },
+        { label: "Événementiel", href: "/events", icon: Calendar },
+      ]
+    },
+    { label: "À propos", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   const services = [
     { icon: Users, titre: "Networking Events", description: "Événements de réseautage qui créent des connexions authentiques." },
     { icon: Lightbulb, titre: "Conférences & Talks", description: "Conférences inspirantes avec des leaders d'opinion." },
@@ -40,260 +78,515 @@ const EventsPage = () => {
     "Disponibilité 24/7 pour vos événements",
   ];
 
-  return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Hero Dynamique */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary via-accent to-secondary">
-        <Link to="/" className="absolute top-8 left-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 hover:bg-white/20 transition-all group border border-white/20">
-          <Home size={20} className="text-white group-hover:scale-110 transition-transform" />
-          <span className="text-white font-bold text-sm">Accueil</span>
-        </Link>
+  // Animation variants cohérents avec le reste du site
+  const fadeInUp = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.6 }
+  };
 
-        {/* Pattern de fond */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  };
+
+  return (
+    <div className="min-h-screen bg-white font-sans">
+      
+      {/* ===== NAVBAR INTÉGRÉE ===== */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-white rounded flex items-center justify-center">
+                <img src={hilsLogo} alt="HILS Company" className="w-10 h-10 object-contain" />
+              </div>
+              <div>
+                <span className={`font-bold text-xl block leading-tight ${scrolled ? 'text-teal-900' : 'text-white'}`}>
+                  HILS
+                </span>
+                <span className={`text-xs font-medium tracking-widest ${scrolled ? 'text-slate-600' : 'text-teal-200'}`}>
+                  COMPANY
+                </span>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navItems.map((item, index) => (
+                <div 
+                  key={index}
+                  className="relative"
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <button
+                    onClick={() => item.dropdown && setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                    className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                      scrolled 
+                        ? 'text-slate-700 hover:text-teal-700' 
+                        : 'text-white hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                    {item.dropdown && <ChevronDown size={14} className={`transition-transform ${activeDropdown === item.label ? 'rotate-180' : ''}`} />}
+                  </button>
+                  
+                  <AnimatePresence>
+                    {item.dropdown && activeDropdown === item.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-slate-100 py-2 z-50"
+                      >
+                        {item.dropdown.map((subItem, subIndex) => (
+                          <Link
+                            key={subIndex}
+                            to={subItem.href}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors"
+                          >
+                            <subItem.icon size={16} className="text-teal-600" />
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </nav>
+
+            {/* CTA + Mobile Toggle */}
+            <div className="flex items-center gap-3">
+              <Link 
+                to="/contact" 
+                className={`hidden lg:inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded transition-all ${
+                  scrolled 
+                    ? 'bg-teal-900 text-white hover:bg-teal-800' 
+                    : 'bg-white text-teal-900 hover:bg-teal-50'
+                }`}
+              >
+                Démarrer
+                <ArrowRight size={16} />
+              </Link>
+              
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-teal-900' : 'text-white'}`}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-white border-t border-slate-100 overflow-hidden shadow-xl"
+            >
+              <div className="px-4 py-4 space-y-2">
+                {[
+                  { label: "Accueil", href: "/" },
+                  { label: "Communication", href: "/communication", icon: Megaphone },
+                  { label: "Tourisme", href: "/tourisme", icon: Compass },
+                  { label: "Événementiel", href: "/events", icon: Calendar },
+                  { label: "À propos", href: "/about" },
+                  { label: "Contact", href: "/contact" },
+                ].map((item, index) => (
+                  <Link
+                    key={index}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-teal-50 hover:text-teal-700 rounded-lg transition-colors"
+                  >
+                    {item.icon && <item.icon size={18} className="text-teal-600" />}
+                    <span className="font-semibold">{item.label}</span>
+                  </Link>
+                ))}
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full mt-4 px-5 py-3 bg-teal-900 text-white font-bold rounded-lg"
+                >
+                  Démarrer un projet
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-slate-900 pt-20">
+        
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
         }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8">
-              <Zap size={16} className="text-gold" />
-              <span className="text-white font-semibold text-sm">Événementiel & Networking</span>
-            </div>
+        {/* Decorative blur circles */}
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-slate-700/20 rounded-full blur-3xl pointer-events-none" />
 
-            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Connectez.
-              <br />
-              <span className="text-gold">Inspirez.</span>
-              <br />
-              Entreprenez.
-            </h1>
-
-            <p className="text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Des événements qui transforment les rencontres en opportunités et les idées en succès entrepreneurial.
-            </p>
-
-            <div className="flex flex-wrap gap-4 justify-center mb-16">
-              <Link to="/events/african-conscience-chill" className="px-8 py-4 bg-gold text-primary rounded-2xl font-bold hover:bg-gold/90 transition-all hover:scale-105 shadow-lg">
-                African Conscience Chill
-              </Link>
-              <Link to="/events/services" className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20">
-                Nos Services
-              </Link>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-12">
-              {[
-                { nb: "50+", label: "Événements" },
-                { nb: "1000+", label: "Entrepreneurs" },
-                { nb: "20+", label: "Partenaires" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-4xl font-black text-gold mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>{stat.nb}</div>
-                  <div className="text-white/60 text-sm uppercase tracking-wider">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto">
+          
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-6"
+          >
+            <Zap size={16} className="text-white" />
+            <span className="text-white text-sm font-bold tracking-wide uppercase">
+              Événementiel & Networking
+            </span>
           </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6"
+          >
+            Connectez.
+            <br />
+            <span className="text-teal-200">Inspirez.</span>
+            <br />
+            Entreprenez.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-white/90 text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-light"
+          >
+            Des événements qui transforment les rencontres en opportunités et les idées en succès entrepreneurial.
+          </motion.p>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16"
+          >
+            <Link 
+              to="/events/african-conscience-chill" 
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-teal-900 font-bold rounded-lg hover:bg-teal-50 transition-all duration-300"
+            >
+              African Conscience Chill
+              <ArrowRight size={18} />
+            </Link>
+            <Link 
+              to="/events/services" 
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/20 transition-all"
+            >
+              Nos Services
+            </Link>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap justify-center gap-8 sm:gap-12 pt-8 border-t border-white/10"
+          >
+            {[
+              { nb: "50+", label: "Événements" },
+              { nb: "1000+", label: "Entrepreneurs" },
+              { nb: "20+", label: "Partenaires" },
+            ].map((stat, index) => (
+              <motion.div 
+                key={index} 
+                className="text-center"
+                variants={fadeInUp}
+              >
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2">
+                  {stat.nb}
+                </div>
+                <div className="text-white/80 text-xs sm:text-sm font-semibold uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center pt-2">
+            <div className="w-1 h-2 bg-white/60 rounded-full" />
+          </div>
+        </motion.div>
+
       </section>
 
-      {/* Services Cards */}
-      <section className="py-24 px-6 bg-bg">
+      {/* ===== SERVICES CARDS ===== */}
+      <section id="services" className="py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Nos Services</span>
-            <h2 className="text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Événements <span className="text-gold">Sur Mesure</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Nos Services
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Événements Sur Mesure
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          >
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="group bg-white rounded-3xl p-8 border-2 border-primary/10 hover:border-gold transition-all shadow-lg"
+                  variants={fadeInUp}
+                  whileHover={{ y: -4 }}
+                  className="group bg-white rounded-xl p-8 border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all">
-                    <Icon size={28} className="text-white" />
+                  <div className="w-14 h-14 rounded-xl bg-teal-50 flex items-center justify-center mb-6 group-hover:bg-teal-100 transition-colors">
+                    <Icon size={28} className="text-teal-700" />
                   </div>
-                  <h3 className="text-xl font-black text-primary mb-3">{service.titre}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
-                  <div className="flex items-center gap-2 text-gold font-semibold group-hover:gap-3 transition-all">
+                  <h3 className="text-xl font-bold text-teal-900 mb-3">{service.titre}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-4 text-sm">{service.description}</p>
+                  <div className="flex items-center gap-2 text-teal-700 font-semibold group-hover:gap-3 transition-all">
                     <span>Découvrir</span>
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Avantages */}
-      <section className="py-24 px-6 bg-white">
+      {/* ===== AVANTAGES ===== */}
+      <section className="py-24 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Pourquoi Nous Choisir</span>
-            <h2 className="text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Notre <span className="text-gold">Excellence</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Pourquoi Nous Choisir
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Notre Excellence
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {advantages.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-primary/5 rounded-3xl p-8 text-center border-2 border-primary/10 hover:border-gold hover:shadow-xl transition-all"
+                  variants={fadeInUp}
+                  className="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Icon size={32} className="text-gold" />
+                  <div className="w-16 h-16 rounded-xl bg-teal-50 flex items-center justify-center mx-auto mb-4">
+                    <Icon size={32} className="text-teal-700" />
                   </div>
-                  <h3 className="text-xl font-black text-primary mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-teal-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600 text-sm">{item.desc}</p>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Éditions Passées */}
-      <section className="py-24 px-6 bg-bg">
+      {/* ===== ÉDITIONS PASSÉES ===== */}
+      <section className="py-24 bg-slate-50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-gold font-bold text-sm uppercase tracking-widest">Nos Réalisations</span>
-            <h2 className="text-5xl font-black text-primary mt-3 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Éditions <span className="text-gold">Précédentes</span>
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+              Nos Réalisations
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+              Éditions Précédentes
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {pastEvents.map((event, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                className="bg-white rounded-3xl overflow-hidden border-2 border-primary/10 hover:border-gold transition-all shadow-lg"
+                variants={fadeInUp}
+                whileHover={{ y: -4 }}
+                className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all"
               >
                 <div className="h-48 overflow-hidden">
                   <img src={event.img} alt={event.theme} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <Calendar size={16} className="text-gold" />
-                    <span className="text-gold font-bold">{event.year}</span>
+                    <Calendar size={16} className="text-teal-600" />
+                    <span className="text-teal-600 font-bold">{event.year}</span>
                   </div>
-                  <h3 className="text-xl font-black text-primary mb-4">{event.theme}</h3>
-                  <div className="flex items-center justify-between text-sm text-gray-600">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4">{event.theme}</h3>
+                  <div className="flex items-center justify-between text-sm text-slate-600">
                     <div className="flex items-center gap-1">
-                      <Users size={14} />
+                      <Users size={14} className="text-teal-600" />
                       <span>{event.participants}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin size={14} />
+                      <MapPin size={14} className="text-teal-600" />
                       <span>{event.location}</span>
                     </div>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Services Hôtesses */}
-      <section className="py-24 px-6 bg-white">
+      {/* ===== SERVICES HÔTESSES ===== */}
+      <section className="py-24 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-gold font-bold text-sm uppercase tracking-widest">Services Premium</span>
-              <h2 className="text-4xl font-black text-primary mt-3 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Hôtesses & <span className="text-gold">Animation</span>
+            <motion.div {...fadeInUp}>
+              <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
+                Services Premium
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-teal-900 mt-3 mb-6">
+                Hôtesses & Animation
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <p className="text-slate-600 text-lg leading-relaxed mb-6">
                 Notre équipe d'hôtesses et animateurs professionnels apporte une touche d'élégance et de dynamisme à vos événements.
               </p>
               <ul className="space-y-3">
                 {hostessServices.map((service, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle size={20} className="text-gold mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{service}</span>
+                    <CheckCircle size={20} className="text-teal-600 mt-1 flex-shrink-0" />
+                    <span className="text-slate-700 text-sm">{service}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
+            </motion.div>
+            
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.2 }}
+              className="grid grid-cols-2 gap-4"
+            >
               {[lomeImg, accraImg, dakarImg, heroImg].map((img, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="rounded-2xl overflow-hidden shadow-lg"
+                  className="rounded-xl overflow-hidden shadow-lg aspect-square"
                 >
-                  <img src={img} alt={`Service ${index + 1}`} className="w-full h-48 object-cover" />
+                  <img src={img} alt={`Service ${index + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 bg-gradient-to-br from-primary via-accent to-secondary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
-          backgroundSize: "30px 30px",
+      {/* ===== CTA SECTION ===== */}
+      <section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
+        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+          backgroundSize: "40px 40px",
         }} />
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-slate-700/20 blur-3xl pointer-events-none" />
         
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Prêt à créer l'événement de l'année ?
-            </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Rejoignez l'écosystème entrepreneurial africain et faites partie de l'histoire.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-10 py-4 bg-white text-primary rounded-2xl font-black hover:scale-105 transition-all shadow-xl">
-                Participer
-              </button>
-              <button className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20">
-                Devenir partenaire
-              </button>
-            </div>
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="text-white text-sm font-bold tracking-wide uppercase">
+              Rejoignez-nous
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-8 leading-tight"
+          >
+            Prêt à créer l'événement de l'année ?
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Rejoignez l'écosystème entrepreneurial africain et faites partie de l'histoire.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap gap-4 justify-center"
+          >
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-teal-900 font-bold rounded-lg hover:bg-teal-50 transition-all"
+            >
+              Participer
+              <ArrowRight size={18} />
+            </Link>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/20 transition-all"
+            >
+              Devenir partenaire
+            </Link>
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 };

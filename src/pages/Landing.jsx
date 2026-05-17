@@ -206,7 +206,7 @@ export default function Landing() {
   const testimonials = [
     {
       text: "Je recommande cette agence. Ils sont très jeune, très dynamique et très patient. Je travaille avec eux depuis 2024.",
-      author: "Justin AYENAN",
+      author: "Austin AYENAN",
       role: "Manager, 3A Groupe",
       avatar: abidjanImg,
       rating: 5
@@ -463,10 +463,10 @@ export default function Landing() {
             transition={{ delay: 0.4 }}
             className="text-white/90 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-light"
           >
-            Communication • Tourisme • Événementiel
+            HILS COMPANY est une agence spécialisée dans la communication, l’événementiel et les expériences de marque, basée au Bénin et active en Afrique de l’Ouest.
             <br />
             <span className="text-white/70 text-base md:text-lg">
-              Trois univers, une vision : connecter, communiquer et explorer
+              Nous accompagnons entreprises, institutions, marques et porteurs de projets vers des actions à fort impact.
             </span>
           </motion.p>
           
@@ -887,30 +887,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ===== ROADMAP CTA SECTION ===== */}
-      <section className="py-16 bg-teal-900 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl sm:text-4xl font-black text-white mb-6">
-              Prêt à Démarrer Votre Projet ?
-            </h3>
-            <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
-              Contactez notre équipe et décrivez votre projet. Nous vous proposerons une stratégie adaptée à vos besoins.
-            </p>
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-teal-900 font-bold rounded-lg hover:bg-slate-100 transition-all text-lg"
-            >
-              Planifier une consultation
-              <ArrowRight size={20} />
-            </Link>
-          </motion.div>
-        </div>
-      </section> */}
+      {/* ===== FLIP CARDS SECTION - CORRIGÉE ===== */}
       <section className="py-24 bg-teal-900 relative overflow-hidden px-4 sm:px-6">
         {/* Background decorative text */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -970,7 +947,7 @@ export default function Landing() {
               Notre approche sur mesure et notre connaissance approfondie du marché africain nous permettent 
               de délivrer des résultats exceptionnels.
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-white/60 text-sm mb-8">
+            <div className="flex flex-wrap justify-center gap-6 text-white/60 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle size={16} className="text-teal-400" />
                 <span>Expertise reconnue</span>
@@ -988,22 +965,6 @@ export default function Landing() {
                 <span>Réseau panafricain</span>
               </div>
             </div>
-            <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-teal-400 text-teal-900 font-bold rounded-lg hover:bg-teal-500 transition-all"
-              >
-                Commencer maintenant
-                <ArrowRight size={18} />
-              </Link>
-              <a 
-                href="#temoignages" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border-2 border-white/50 text-white font-bold rounded-lg hover:border-white transition-all"
-              >
-                Voir les témoignages
-                <ArrowRight size={18} />
-              </a>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -1048,17 +1009,10 @@ export default function Landing() {
               
               <div className="flex flex-wrap gap-4">
                 <Link 
-                  to="/about" 
+                  to="/communication" 
                   className="px-8 py-4 bg-teal-900 text-white rounded-lg font-bold hover:bg-teal-800 transition-all inline-flex items-center gap-3"
                 >
-                  En savoir plus
-                  <ArrowRight size={18} />
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className="px-8 py-4 bg-white/10 border-2 border-white text-white rounded-lg font-bold hover:bg-white/20 transition-all inline-flex items-center gap-3"
-                >
-                  Nous contacter
+                  Démarrer un projet
                   <ArrowRight size={18} />
                 </Link>
               </div>
@@ -1123,14 +1077,14 @@ export default function Landing() {
             nous avons la solution adaptée à vos besoins.
           </motion.p>
           
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
             <Link 
-              to="/communication" 
+              to="/contact" 
               className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-red-900 font-bold rounded-lg hover:bg-slate-100 transition-all duration-300 text-lg"
             >
               Contactez-nous maintenant
@@ -1196,11 +1150,11 @@ export default function Landing() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={18} className="text-teal-400 flex-shrink-0" />
-                  <span className="text-sm">+229 01 95 41 66 26</span>
+                  <span className="text-sm">+229 01 95 41 66 26 / +229 01 68 52 59 12</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={18} className="text-teal-400 flex-shrink-0" />
-                  <span className="text-sm">hilscompany15@gmail.com</span>
+                  <span className="text-sm">htonissou92.com</span>
                 </li>
               </ul>
             </div>

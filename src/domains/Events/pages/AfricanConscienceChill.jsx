@@ -18,8 +18,7 @@ const AfricanConscienceChill = () => {
     { 
       year: "2025", 
       participants: "1000+", 
-      theme: "Green Economy & Innovation",
-      image: cotounouImg,
+      theme: "Collaboration entre les createurs ,les entrepreneurs et les marques",
       location: "Cotonou, Bénin"
     },
     { 

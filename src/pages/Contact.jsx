@@ -48,20 +48,20 @@ export default function Contact() {
     },
     {
       icon: Phone,
-      title: "Téléphone",
-      details: ["+229 01 95 41 66 26", "Lun-Ven, 9h-18h"],
+      title: "Téléphones",
+      details: ["+229 01 95 41 66 26", "+229 01 68 52 59 12"],
       color: "text-green-600"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["hilscompany15@gmail.com", "Réponse rapide"],
+      details: ["htonissou92.com", "Manager : TOGNISSOU Hervé"],
       color: "text-blue-600"
     },
     {
       icon: Clock,
-      title: "Horaires",
-      details: ["Lun-Ven: 9h - 18h", "Sam: 10h - 14h"],
+      title: "Zone d'intervention",
+      details: ["Bénin – Afrique de l'Ouest", "Collaborations internationales selon les projets"],
       color: "text-yellow-600"
     },
   ];
@@ -137,9 +137,9 @@ export default function Contact() {
             transition={{ delay: 0.4 }}
             className="text-white/90 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            Événementiel | Industries Créatives et Culturelles.
+            HILS COMPANY est une agence spécialisée dans la communication, l’événementiel et les expériences de marque, basée au Bénin et active en Afrique de l’Ouest.
             <br />
-            Vous avez un projet à organiser ? Contactez-nous directement par email, WhatsApp ou LinkedIn.
+            Directeur : TOGNISSOU Hervé. Pour tout projet, contactez-nous par email, WhatsApp ou LinkedIn.
           </motion.p>
         </div>
       </section>

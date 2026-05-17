@@ -52,9 +52,9 @@ const ContactCTA = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center border-t border-white/20 pt-8">
               {[
-                { icon: <Mail size={16} />, text: "hilscompany15@gmail.com" },
+                { icon: <Mail size={16} />, text: "htonissou92.com" },
                 { icon: <MapPin size={16} />, text: "Godomey Togoudo, Bénin" },
-                { icon: <Phone size={16} />, text: "+229 01 95 41 66 26" },
+                { icon: <Phone size={16} />, text: "+229 01 95 41 66 26 / +229 01 68 52 59 12" },
               ].map((info) => (
                 <div
                   key={info.text}

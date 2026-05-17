@@ -1,4 +1,6 @@
+// components/tourisme/Destinations.jsx
 import { MapPin, Clock, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import cotonou from "../../../assets/img/cotonou.jpg";
 import abomey from "../../../assets/img/abomey.jpg";
 import dakar from "../../../assets/img/dakar.jpg";
@@ -64,86 +66,115 @@ const destinations = [
 ];
 
 const Destinations = () => {
+  // Animation variants cohérents avec le reste du site
+  const fadeInUp = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+  };
+
   return (
-    <section className="py-24 bg-bg px-6">
+    <section className="py-24 bg-slate-50 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-gold font-bold text-sm uppercase tracking-widest">
+        
+        {/* Header */}
+        <motion.div {...fadeInUp} className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-teal-100 text-teal-800 font-bold text-xs uppercase tracking-wider rounded-full mb-4">
             Nos Destinations
           </span>
-          <h2
-            className="text-4xl md:text-5xl font-black text-primary mt-3 mb-5"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Explorez l'Afrique{" "}
-            <span className="text-gold">de l'Ouest</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-teal-900 mt-3 mb-6">
+            Explorez l'Afrique <span className="text-teal-600">de l'Ouest</span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Des destinations soigneusement sélectionnées pour vous offrir
             le meilleur de la culture, de l'histoire et de la nature.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Destinations Grid */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        >
           {destinations.map((dest) => (
-            <div
+            <motion.div
               key={dest.id}
-              className="group bg-white rounded-3xl overflow-hidden border-2 border-primary/10 hover:border-gold shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+              variants={fadeInUp}
+              whileHover={{ y: -4 }}
+              className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-teal-300 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
+              {/* Image */}
               <div className="relative h-52 overflow-hidden">
                 <img
                   src={dest.image}
-                  alt={dest.ville}
+                  alt={`${dest.ville}, ${dest.pays}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                  <Clock size={12} className="text-primary" />
-                  <span className="text-primary text-xs font-semibold">{dest.duree}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/40 to-transparent" />
+                
+                {/* Duration badge */}
+                <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-sm">
+                  <Clock size={12} className="text-teal-700" />
+                  <span className="text-teal-900 text-xs font-semibold">{dest.duree}</span>
                 </div>
                 
-                <div className="absolute bottom-4 left-4 flex items-center gap-1">
+                {/* Location */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-1.5">
                   <MapPin size={14} className="text-white" />
                   <span className="text-white text-sm font-medium">{dest.pays}</span>
                 </div>
               </div>
 
+              {/* Content */}
               <div className="p-6">
-                <h3
-                  className="text-xl font-black text-primary mb-2"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
+                <h3 className="text-xl font-bold text-teal-900 mb-2">
                   {dest.ville}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
                   {dest.description}
                 </p>
 
+                {/* Tags */}
                 <div className="flex gap-2 flex-wrap mb-4">
                   {dest.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-[#f5f5f0] text-primary text-xs px-3 py-1 rounded-full font-medium"
+                      className="bg-teal-50 text-teal-700 text-xs px-3 py-1 rounded-full font-medium"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-2 text-secondary text-sm font-bold group-hover:gap-3 transition-all duration-300">
+                {/* CTA */}
+                <div className="flex items-center gap-2 text-teal-700 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
                   <span>Découvrir</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-12">
-          <button className="border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white font-bold px-10 py-4 rounded-full text-base transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        {/* CTA Button */}
+        <motion.div 
+          {...fadeInUp}
+          className="text-center mt-12"
+        >
+          <button className="inline-flex items-center gap-2 px-8 py-4 bg-teal-900 text-white font-bold rounded-lg hover:bg-teal-800 transition-all duration-300 hover:shadow-lg">
             Voir toutes les destinations
+            <ArrowRight size={18} />
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

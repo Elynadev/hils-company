@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 
 // Images
-import heroImg from '../assets/img/eco.jpg';
+import heroImg from '../assets/img/ica.jpg';
 import abidjanImg from '../assets/img/ACC.jpg';
 import cotounouImg from '../assets/img/cotonou.jpg';
 import accraImg from '../assets/img/hotesse4.jpg';

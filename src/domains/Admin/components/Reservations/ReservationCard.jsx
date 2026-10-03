@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { User, Mail, Phone, MapPin, Calendar, Users, Eye, Trash2 } from "lucide-react";
-import { format } from "date-fns";
-import { fr } from "date-fns/locale";
+// import { format } from "date-fns";
+// import { fr } from "date-fns/locale";
 
 const ReservationCard = ({ reservation, onViewDetails, onDelete, onUpdateStatut }) => {
-  const formatDate = (dateString) => {
-    try {
-      return format(new Date(dateString), "d MMM yyyy", { locale: fr });
-    } catch {
-      return dateString;
-    }
-  };
+  // const formatDate = (dateString) => {
+  //   try {
+  //     return format(new Date(dateString), "d MMM yyyy", { locale: fr });
+  //   } catch {
+  //     return dateString;
+  //   }
+  // };
 
   const getStatutColor = (statut) => {
     switch (statut) {
